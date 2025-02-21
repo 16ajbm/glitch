@@ -1,5 +1,11 @@
 # Glitch
 
+## Setup
+
+Steps:
+
+- Add the file [pre-push](Hooks/pre-push) to your `.git/` folder within the project directory
+
 ## Version Control
 
 We will be using GitHub for version control for the [project](https://github.com/16ajbm/Glitch).
