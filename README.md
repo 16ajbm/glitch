@@ -7,6 +7,10 @@ We will be using GitHub for version control for the [project](https://github.com
 We will be following the [Git Flow](https://gamemakerblog.com/2023/07/13/how-to-use-git-flow-for-game-development/) branching model.
 
 ### Important Repository Rules
+This section may become obsolete as I now have a GitHub student membership which allows branch protection.
+
+***
+
 I have to write these out because they cannot be enforced by GitHub unless we have a Team membership. They are:
 - **DO NOT** push directly to `main`
 - **DO NOT** push directly to `develop`
