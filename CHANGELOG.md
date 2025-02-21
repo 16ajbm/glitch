@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- `README.md` to explain the use of a changelog
+- `README.md`
+  - Added the [Changelog](README.md/#changelog) section
+  - Removed the `Important Repository Rules` section as it is no longer applicable with branch rules
 
 <!-- [0.0.1]: <RELEASE_URL> -->
