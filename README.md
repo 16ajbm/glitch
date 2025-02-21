@@ -25,3 +25,17 @@ TODO:
 - Determine file structure
 - Determine file naming scheme
 - Determine code naming scheme
+
+## Prototype
+
+Digital prototypes can be found under
+
+```bash
+Assets/Scenes/Prototypes/
+```
+
+All UI prototypes are in the UI folder and divided into subfolders.
+
+### UI - Bounce Prototype
+
+Doesn't use dynamic beat detection. Instead it relies on BPM of the music playing to calculate beat timing and place the sprites for the whole and half beats. Music used is free to use for game development. It is from the album by One Man Symphony called Collateral Damage. It is track 15, CyberRace Theme 02. It can be found on [bandcamp](https://onemansymphony.bandcamp.com/album/collateral-damage-free).
