@@ -1,5 +1,11 @@
 # Glitch
 
+## Setup
+
+Steps:
+
+- Add the file [pre-push](Hooks/pre-push) to your `.git/hooks` folder within the project directory
+
 ## Version Control
 
 We will be using GitHub for version control for the [project](https://github.com/16ajbm/Glitch).
@@ -20,6 +26,14 @@ TODO:
 - Determine file structure
 - Determine file naming scheme
 - Determine code naming scheme
+
+## Making a Change
+
+When contributing to the repository there are a few things to keep in mind:
+
+1. Your rpository is [setup](#setup) correctly
+2. You are working on a feature branch and it is brought into `develop` via a Pull Request
+3. Your files are well-formatted, linted and tests pass (ideally we will have automated tools to ensure this, but it is always good practice)
 
 ## Resources
 

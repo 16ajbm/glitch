@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+if [[ `grep 'develop'` ]]; then
+  echo "--- This branch cannot be pushed to directly ---"
+  exit 1
+fi
+
+if [[ `grep 'main'` ]]; then
+  echo "--- This branch cannot be pushed to directly ---"
+  exit 1
+fi
