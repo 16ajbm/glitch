@@ -4,31 +4,31 @@ using System;
 
 public class Waveform : MonoBehaviour
 {
+    // Audio
     public AudioSource audio;
+    private float bpm = 130f; // BPM of music track
+    private float dt; // time between beats
     public LineRenderer lineRenderer;
-    public GameObject indicator;
-    private string filename = "Assets\\Scenes\\Prototypes\\UI\\PianoRoll\\points2.txt";
-    private string[] lines;
-    private float[] time;
-    private float[] amplitude;
-    private int n;
-    private float bpm = 130f;
-    private float dt;
-    public float xScale=5;
-    public float yScale=10;
-    private float indicatorX = -6f;
-    private float indicatorY = 0f;
-    private float maxTime;
-    private float[] bpmTimes;
-    public GameObject beatSprite;
-    private GameObject[] allBeats;
-    private float firstBeatOffset = 0.18f;
-    private float timeElapsed = 0f;
-    private float lastTime = 0f;
-    private float beatSpeed;
+    private float beatSpeed; // used to calculate left shift of beats
+    private float firstBeatOffset = 0.18f; // offset from t=0 of first beat
+    private float[] bpmTimes; // timestamps of beats
+    public GameObject beatSprite; // sprite for beat
+    private GameObject[] allBeats; // copied beat sprites
+
+    // Waveform
+    private string filename = "Assets\\Scenes\\Prototypes\\UI\\PianoRoll\\points2.txt"; // waveform data
+    private string[] lines; // temporary waveform data storage
+    private float[] time; // waveform timestamps
+    private float[] amplitude; // waveform amplitudes
+    private int n; // length of waveform data
+
+    // Misc
+    public float xScale=5; // scale waveform in x direction
+    public float yScale=10; // scale waveform in y direction
+    private float indicatorX = -6f; // indicator xpos
+    private float lastTime = 0f; // time since last left shift of beats
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         dt = 60f / bpm;
@@ -43,23 +43,22 @@ public class Waveform : MonoBehaviour
 
         RenderBeats();
 
-        //beatSpeed = (xScale / dt) / 2;
         beatSpeed = xScale;
 
-        timeElapsed = Time.time;
         lastTime = Time.time;
         audio.Play();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // Move plot and beats left
+        // Move waveform left at beatVelocity
+
         for (int i = 0; i < n; i++)
         {
-            //lineRenderer.SetPosition(i, new Vector3(xScale*time[i]+indicatorX-beatSpeed*(Math.Abs(Time.time-timeElapsed)), yScale*amplitude[i]-0.5f*yScale, 0));
             lineRenderer.SetPosition(i, new Vector3(xScale*time[i]+indicatorX-beatSpeed*Time.time, yScale*amplitude[i]-0.5f*yScale, -2));
         }
+
+        // Move beat sprites left at beatVelocity
 
         for (int i = 0; i < allBeats.Length; i++)
         {
@@ -68,11 +67,12 @@ public class Waveform : MonoBehaviour
         }
 
         lastTime = Time.time;
-        timeElapsed += Time.time;
     }
 
     void GetData()
     {
+        // Load x and y data for wavefrom from file
+
         lines = File.ReadAllLines(filename);
         n = lines.Length;
         time = new float[n];
@@ -85,7 +85,9 @@ public class Waveform : MonoBehaviour
 
         lineRenderer.positionCount = n;
 
-        maxTime = time[n-1];
+        // Calculate beat timestamps
+
+        float maxTime = time[n-1];
         float cTime = 0f;
         int count = 0;
         while (cTime <= maxTime) {
@@ -101,7 +103,7 @@ public class Waveform : MonoBehaviour
 
     void RenderBeats()
     {
-        // Copy sprite for beat at each position xScale*bpmTimes[i]+indicatorX
+        // Copy sprite for beat and place them on the graph
 
         allBeats = new GameObject[bpmTimes.Length];
         for (int i = 0; i < bpmTimes.Length; i++) {
@@ -112,10 +114,8 @@ public class Waveform : MonoBehaviour
 
     float FindY(float t)
     {
-        // Find y height given bpm time
-        /*int distIndex = 0;
-        float dist = 1000;
-        while (distIndex < bpmTimes.Length && dist > time - bpmTimes[distIndex])*/
+        // Find y position for a given beat timestamp.
+        // Finds closest timestamp in time array and returns scaled amplitude
 
         float prevDist = Math.Abs(time[0] - t);
         for (int i = 1; i < time.Length; i++) {
@@ -127,13 +127,4 @@ public class Waveform : MonoBehaviour
 
         return 0f;
     }
-
-    /*void DrawGraph(float[] x, float[] y)
-    {
-        // Draw LineRenderer graph given x and y
-        for (int i = 0; i < n; i++)
-        {
-            lineRenderer.SetPosition(i, new Vector3(xScale*time[i]+indicatorX, yScale*amplitude[i]-0.5f*yScale, 0));
-        }
-    }*/
 }
