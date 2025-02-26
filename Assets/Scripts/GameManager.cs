@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
             {
                 startPlaying = true;
                 beatScroller.hasStarted = true;
-                audioSource.Play();
+                audioSource.PlayDelayed(3.25f);
             }
         }
     }

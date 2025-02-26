@@ -11,10 +11,24 @@ public class NoteObject : MonoBehaviour
     public int defaultScore = 100;
     public int goldenNoteScore = 250;
 
+    private SpriteRenderer spriteRenderer;
+    public Sprite defaultSprite;
+    public Sprite goldenNoteSprite;
+
 
     public KeyCode keyToPress;
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (isGoldenNote)
+        {
+            spriteRenderer.sprite = goldenNoteSprite;
+        }
+        else
+        {
+            spriteRenderer.sprite = defaultSprite;
+        }
     }
 
     // Update is called once per frame
