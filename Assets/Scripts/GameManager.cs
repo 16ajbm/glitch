@@ -10,20 +10,25 @@ public class GameManager : MonoBehaviour
 
     public int currentScore = 0;
 
-    public int numGoldenNotes;
-
-
     public int scorePerNote = 100;
-    public int scorePerGoldenNote = 250;
+
+    public float currentMultiplier = 1.0f;
+
+    public float multiplierPerNote = 0.1f;
+
+    public float multiplierMax = 4.0f;
+
+    public float multiplierMin = 1.0f;
+
 
     public TMP_Text scoreText;
-    public TMP_Text goldenNoteText;
+    public TMP_Text multiplierText;
 
     void Start()
     {
         instance = this;
         scoreText.SetText("Score: 0");
-        goldenNoteText.SetText("Golden Notes: 0");
+        multiplierText.SetText("Multiplier: x1");
     }
 
     // Update is called once per frame
@@ -40,26 +45,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void NoteHit(NoteObject note)
+    public void NoteHit()
     {
         Debug.Log("Hit");
 
-        if (note.isGoldenNote)
-        {
-            currentScore += note.goldenNoteScore;
-            numGoldenNotes++;
-            goldenNoteText.SetText("Golden Notes: " + numGoldenNotes);
-        }
-        else
-        {
-            currentScore += note.defaultScore;
-        }
+        currentScore += (int) Mathf.Round(scorePerNote * currentMultiplier);
+
+        currentMultiplier = Mathf.Min(currentMultiplier + multiplierPerNote, multiplierMax);
 
         scoreText.SetText("Score: " + currentScore);
+        multiplierText.SetText("Muliplier: x" + currentMultiplier);
     }
 
     public void NoteMiss()
     {
         Debug.Log("Miss");
+
+        currentMultiplier = multiplierMin;
+        multiplierText.SetText("Muliplier: x" + currentMultiplier);
     }
 }

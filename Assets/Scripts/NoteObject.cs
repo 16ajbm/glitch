@@ -2,33 +2,11 @@ using UnityEngine;
 
 public class NoteObject : MonoBehaviour
 {
-    // Source: https://www.youtube.com/watch?v=cZzf1FQQFA0&list=PLLPYMaP0tgFKZj5VG82316B63eet0Pvsv
     public bool canBePressed;
-
-    public bool isGoldenNote = false;
-
-    // Public to modify in the inspector
-    public int defaultScore = 100;
-    public int goldenNoteScore = 250;
-
-    private SpriteRenderer spriteRenderer;
-    public Sprite defaultSprite;
-    public Sprite goldenNoteSprite;
-
 
     public KeyCode keyToPress;
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-
-        if (isGoldenNote)
-        {
-            spriteRenderer.sprite = goldenNoteSprite;
-        }
-        else
-        {
-            spriteRenderer.sprite = defaultSprite;
-        }
     }
 
     // Update is called once per frame
@@ -40,7 +18,7 @@ public class NoteObject : MonoBehaviour
             {
                 gameObject.SetActive(false);
 
-                GameManager.instance.NoteHit(this);
+                GameManager.instance.NoteHit();
             }
         }
 

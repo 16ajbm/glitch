@@ -261,11 +261,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 273
 --- !u!1 &47213994
 GameObject:
@@ -409,11 +404,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 276
 --- !u!1 &49383971
 GameObject:
@@ -667,11 +657,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 275
 --- !u!1 &120276534
 GameObject:
@@ -993,11 +978,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 275
 --- !u!1 &215198631
 GameObject:
@@ -1141,11 +1121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 275
 --- !u!1 &278144339
 GameObject:
@@ -1289,11 +1264,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 275
 --- !u!1 &284708255
 GameObject:
@@ -1437,11 +1407,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 275
 --- !u!1 &311867698
 GameObject:
@@ -1585,11 +1550,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 276
 --- !u!1 &345586154
 GameObject:
@@ -1733,11 +1693,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 273
 --- !u!1 &355237631
 GameObject:
@@ -1881,11 +1836,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 275
 --- !u!1 &392713463
 GameObject:
@@ -2207,11 +2157,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 275
 --- !u!1 &462816192
 GameObject:
@@ -2355,11 +2300,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 276
 --- !u!1 &478453792
 GameObject:
@@ -2639,11 +2579,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 275
 --- !u!1 &519420028
 GameObject:
@@ -2924,11 +2859,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 273
 --- !u!1 &549744393
 GameObject:
@@ -3072,11 +3002,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 273
 --- !u!1 &570147777
 GameObject:
@@ -3349,11 +3274,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 275
 --- !u!1 &585914039
 GameObject:
@@ -3497,11 +3417,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 274
 --- !u!1 &590669915
 GameObject:
@@ -3645,11 +3560,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 275
 --- !u!1 &619394800
 GameObject:
@@ -3768,11 +3678,13 @@ MonoBehaviour:
   startPlaying: 0
   beatScroller: {fileID: 49383973}
   currentScore: 0
-  numGoldenNotes: 0
   scorePerNote: 100
-  scorePerGoldenNote: 250
+  currentMultiplier: 1
+  multiplierPerNote: 0.1
+  multiplierMax: 4
+  multiplierMin: 1
   scoreText: {fileID: 478453794}
-  goldenNoteText: {fileID: 1159142623}
+  multiplierText: {fileID: 1159142623}
 --- !u!4 &668107138
 Transform:
   m_ObjectHideFlags: 0
@@ -3931,11 +3843,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 274
 --- !u!1 &707860222
 GameObject:
@@ -4079,11 +3986,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 274
 --- !u!1 &768176968
 GameObject:
@@ -4227,11 +4129,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 273
 --- !u!1 &784553293
 GameObject:
@@ -4375,11 +4272,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 274
 --- !u!1 &815543912
 GameObject:
@@ -4523,11 +4415,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 273
 --- !u!1 &822063176
 GameObject:
@@ -4671,11 +4558,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 273
 --- !u!1 &823776891
 GameObject:
@@ -4819,11 +4701,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 276
 --- !u!1 &843998079
 GameObject:
@@ -4967,11 +4844,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 275
 --- !u!1 &857975637
 GameObject:
@@ -5115,11 +4987,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 276
 --- !u!1 &878329803
 GameObject:
@@ -5263,11 +5130,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 273
 --- !u!1 &882649518
 GameObject:
@@ -5411,11 +5273,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 275
 --- !u!1 &889679052
 GameObject:
@@ -5559,11 +5416,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 276
 --- !u!1 &937235998
 GameObject:
@@ -5707,11 +5559,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 275
 --- !u!1 &986043283
 GameObject:
@@ -5855,11 +5702,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 273
 --- !u!1 &1019843496
 GameObject:
@@ -6003,11 +5845,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 276
 --- !u!1 &1063014290
 GameObject:
@@ -6151,11 +5988,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 274
 --- !u!1 &1102763055
 GameObject:
@@ -6299,11 +6131,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 273
 --- !u!1 &1145865476
 GameObject:
@@ -6447,11 +6274,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 276
 --- !u!1 &1155741775
 GameObject:
@@ -6595,11 +6417,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 275
 --- !u!1 &1159142621
 GameObject:
@@ -6613,7 +6430,7 @@ GameObject:
   - component: {fileID: 1159142624}
   - component: {fileID: 1159142623}
   m_Layer: 5
-  m_Name: GoldenNotesText
+  m_Name: MultiplierText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6658,7 +6475,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Golden Notes: 3'
+  m_text: 'Multiplier: x2'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6788,11 +6605,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 276
 --- !u!58 &1185169870
 CircleCollider2D:
@@ -7027,11 +6839,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 1
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 275
 --- !u!1 &1219548829
 GameObject:
@@ -7175,11 +6982,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 275
 --- !u!1 &1226737438
 GameObject:
@@ -7323,11 +7125,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 274
 --- !u!1 &1231347595
 GameObject:
@@ -7471,11 +7268,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 273
 --- !u!1 &1273342057
 GameObject:
@@ -7900,11 +7692,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 275
 --- !u!1 &1391417659
 GameObject:
@@ -8048,11 +7835,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 1
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 276
 --- !u!1 &1448704894
 GameObject:
@@ -8196,11 +7978,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 276
 --- !u!1 &1466298658
 GameObject:
@@ -8344,11 +8121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 276
 --- !u!1 &1499448602
 GameObject:
@@ -8492,11 +8264,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 273
 --- !u!1 &1646273241
 GameObject:
@@ -8640,11 +8407,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 275
 --- !u!1 &1664765572
 GameObject:
@@ -8867,11 +8629,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 276
 --- !u!1 &1750879617
 GameObject:
@@ -9015,11 +8772,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 274
 --- !u!1 &1830229065
 GameObject:
@@ -9163,11 +8915,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 1
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 273
 --- !u!1 &1833332832
 GameObject:
@@ -9489,11 +9236,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 273
 --- !u!1 &1885735197
 GameObject:
@@ -9637,11 +9379,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 273
 --- !u!1 &1889270396
 GameObject:
@@ -9785,11 +9522,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 275
 --- !u!1 &1936305554
 GameObject:
@@ -9933,11 +9665,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 1
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 275
 --- !u!1 &1952487230
 GameObject:
@@ -10081,11 +9808,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 273
 --- !u!1 &1974794876
 GameObject:
@@ -10229,11 +9951,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 275
 --- !u!1 &2003353773
 GameObject:
@@ -10377,11 +10094,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 274
 --- !u!1 &2008318332
 GameObject:
@@ -10525,11 +10237,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 276
 --- !u!1 &2060846494
 GameObject:
@@ -10673,11 +10380,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 275
 --- !u!1 &2084986893
 GameObject:
@@ -10821,11 +10523,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 276
 --- !u!1 &2097455750
 GameObject:
@@ -10969,11 +10666,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 275
 --- !u!1 &2123857936
 GameObject:
@@ -11117,11 +10809,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 275
 --- !u!1 &2128069406
 GameObject:
@@ -11265,11 +10952,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  isGoldenNote: 0
-  defaultScore: 100
-  goldenNoteScore: 250
-  defaultSprite: {fileID: 6565611790505804585, guid: ec78880aecda3b14e9af23e445aaacad, type: 3}
-  goldenNoteSprite: {fileID: -7533067353591108028, guid: f050c97f5bbbf3b4889101640cf5b20e, type: 3}
   keyToPress: 276
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
