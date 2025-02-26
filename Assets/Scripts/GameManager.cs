@@ -1,15 +1,29 @@
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    // Source: https://www.youtube.com/watch?v=PMfhS-kEvc0&list=PLLPYMaP0tgFKZj5VG82316B63eet0Pvsv&index=2
-    public AudioSource theMusic;
+    public AudioSource audioSource;
     public bool startPlaying;
-    public BeatScroller theBS;
-    public static GameManager instance; 
+    public BeatScroller beatScroller;
+    public static GameManager instance;
+
+    public int currentScore = 0;
+
+    public int numGoldenNotes;
+
+
+    public int scorePerNote = 100;
+    public int scorePerGoldenNote = 250;
+
+    public TMP_Text scoreText;
+    public TMP_Text goldenNoteText;
+
     void Start()
     {
         instance = this;
+        scoreText.SetText("Score: 0");
+        goldenNoteText.SetText("Golden Notes: 0");
     }
 
     // Update is called once per frame
@@ -20,15 +34,28 @@ public class GameManager : MonoBehaviour
             if (Input.anyKeyDown)
             {
                 startPlaying = true;
-                theBS.hasStarted = true;
-                theMusic.Play();
+                beatScroller.hasStarted = true;
+                audioSource.Play();
             }
         }
     }
 
-    public void NoteHit()
+    public void NoteHit(NoteObject note)
     {
         Debug.Log("Hit");
+
+        if (note.isGoldenNote)
+        {
+            currentScore += note.goldenNoteScore;
+            numGoldenNotes++;
+            goldenNoteText.SetText("Golden Notes: " + numGoldenNotes);
+        }
+        else
+        {
+            currentScore += note.defaultScore;
+        }
+
+        scoreText.SetText("Score: " + currentScore);
     }
 
     public void NoteMiss()

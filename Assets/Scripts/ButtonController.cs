@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class ButtonController : MonoBehaviour
 {
-    // Source: https://www.youtube.com/watch?v=cZzf1FQQFA0&list=PLLPYMaP0tgFKZj5VG82316B63eet0Pvsv
-    private SpriteRenderer theSR;
+    private SpriteRenderer spriteRenderer;
     public Sprite defaultImage;
     public Sprite pressedImage;
 
@@ -11,7 +10,7 @@ public class ButtonController : MonoBehaviour
 
     void Start()
     {
-        theSR = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
     }
 
@@ -20,12 +19,12 @@ public class ButtonController : MonoBehaviour
     {
         if (Input.GetKeyDown(keyToPress))
         {
-            theSR.sprite = pressedImage;
+            spriteRenderer.sprite = pressedImage;
         }
 
         if (Input.GetKeyUp(keyToPress))
         {
-            theSR.sprite = defaultImage;
+            spriteRenderer.sprite = defaultImage;
         }
     }
 }
