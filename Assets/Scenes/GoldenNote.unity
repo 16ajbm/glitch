@@ -523,7 +523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5e35896954dce94fa94abc29348cad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beatTempo: 160
+  beatTempo: 128
   hasStarted: 0
 --- !u!1 &57379208
 GameObject:
@@ -3089,7 +3089,7 @@ GameObject:
   - component: {fileID: 570147779}
   - component: {fileID: 570147778}
   m_Layer: 0
-  m_Name: ForeverBound - Stereo Madness
+  m_Name: LetsParty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3105,8 +3105,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3787a65f3b1c6ac4db4d453849a34051, type: 3}
-  m_Resource: {fileID: 8300000, guid: 3787a65f3b1c6ac4db4d453849a34051, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 197873bd979818a4b9984494471f13f7, type: 3}
+  m_Resource: {fileID: 8300000, guid: 197873bd979818a4b9984494471f13f7, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
