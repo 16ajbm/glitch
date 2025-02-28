@@ -21,11 +21,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Project Organization
 
-TODO:
-
-- Determine file structure
-- Determine file naming scheme
-- Determine code naming scheme
+```
+Assets
++--- Docs # Concept art, etc.
++--- Prefabs
++--- Scenes
+| +--- Sandbox # Folder for prototype scenes
++--- Scripts
++--- Settings
++--- Shaders
++--- Sprites
+```
 
 ## Making a Change
 
