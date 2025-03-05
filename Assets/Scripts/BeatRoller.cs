@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class BeatRoller : MonoBehaviour
 {
-    public AudioSource audio;
+    new public AudioSource audio;
+    [Range(0f, 1f), SerializeField] float volume = 1f;
+
     public GameObject ball;
     public GameObject wholeBeat;
     public GameObject halfBeat;
@@ -36,7 +38,7 @@ public class BeatRoller : MonoBehaviour
         ball.SetActive(true);
 
         allBeats = new GameObject[numBeatDivisions];
-        timeElapsed = new float[numBeatDivisions]; 
+        timeElapsed = new float[numBeatDivisions];
 
         halfDt = (60f / bpm) / 2f;
         halfBeatDist = (rangeEnd - rangeStart) / numBeatDivisions;
@@ -58,6 +60,11 @@ public class BeatRoller : MonoBehaviour
 
     void Update()
     {
+         // Apply the volume value from the editor to the AudioSource
+        if (audio != null)
+            audio.volume = volume;
+
+
         // Move ball up and down with a period of 1 beat
         ball.transform.position = Vector3.Lerp(ballOrigin, ballTarget, Mathf.PingPong(Time.time * halfBeatSpeed, 1));
 
