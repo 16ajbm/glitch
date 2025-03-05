@@ -6,6 +6,8 @@ public class BeatRoller : MonoBehaviour
     public float firstBeatOffset = 0.55f;
     new public AudioSource audio;
     public Canvas parentCanvas;
+    [Range(0f, 1f), SerializeField] float volume = 1f;
+
     public GameObject ball;
     public GameObject wholeBeat;
     public GameObject halfBeat;
@@ -13,7 +15,7 @@ public class BeatRoller : MonoBehaviour
     private float halfBeatDelta; // Time between half beats
     private float halfBeatDist; // Distance between half beats
     private float halfBeatSpeed;
-    private int rangeStart = - 1920 / 2;
+    private int rangeStart = -1920 / 2;
     private int rangeEnd = 1920 / 2;
     private int rangeLen;
     private int numBeatDivisions = 16; // Number of indicators on screen
@@ -49,11 +51,15 @@ public class BeatRoller : MonoBehaviour
         halfBeatDist = (rangeEnd - rangeStart) / (numBeatDivisions);
         halfBeatSpeed = halfBeatDist / halfBeatDelta;
 
-       for (int i = 0; i < numBeatDivisions; i++) {
+        for (int i = 0; i < numBeatDivisions; i++)
+        {
             float xCalc = rangeStart + i * halfBeatDist;
-            if (i % 2 == 0) {
+            if (i % 2 == 0)
+            {
                 allBeats[i] = Instantiate(wholeBeat);
-            } else {
+            }
+            else
+            {
                 allBeats[i] = Instantiate(halfBeat);
             }
 
@@ -70,30 +76,41 @@ public class BeatRoller : MonoBehaviour
 
     void Update()
     {
-        if (audio.time >= firstBeatOffset) {
+        if (audio.time >= firstBeatOffset)
+        {
+            // Apply the volume value from the editor to the AudioSource
+            if (audio != null)
+                audio.volume = volume;
+
+
+            // Move ball up and down with a period of 1 beat
+            ball.transform.position = Vector3.Lerp(ballOrigin, ballTarget, Mathf.PingPong(Time.time * halfBeatSpeed, 1));
 
             ball.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition = Vector2.Lerp(ballOrigin, ballTarget, Mathf.PingPong(Time.time / halfBeatDelta, 1));
 
             // Shift beats left
-            for (int i = 0; i < numBeatDivisions; i++) {
+            for (int i = 0; i < numBeatDivisions; i++)
+            {
                 GameObject currBeat = allBeats[i];
 
                 Image currIMG = currBeat.GetComponent<Image>();
                 RectTransform currRT = currIMG.GetComponent<RectTransform>();
 
                 // Wrap to end of range
-                if (currRT.anchoredPosition.x <= rangeStart) {
+                if (currRT.anchoredPosition.x <= rangeStart)
+                {
                     currIMG.color = white;
 
                     currRT.anchoredPosition = new Vector2(rangeEnd, halfBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
 
                     // Insert random golden notes
-                    if (iter % 17 == 0 && currBeat.CompareTag("WholeBeat")) {
+                    if (iter % 17 == 0 && currBeat.CompareTag("WholeBeat"))
+                    {
                         currIMG.color = yellow;
                     }
                 }
 
-                currRT.anchoredPosition = new Vector2(currRT.anchoredPosition.x - (halfBeatSpeed*(Time.time - timeElapsed[i])), wholeBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
+                currRT.anchoredPosition = new Vector2(currRT.anchoredPosition.x - (halfBeatSpeed * (Time.time - timeElapsed[i])), wholeBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
                 timeElapsed[i] = Time.time;
             }
             iter++;
