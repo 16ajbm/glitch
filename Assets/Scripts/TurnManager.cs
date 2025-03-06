@@ -20,10 +20,10 @@ public class TurnManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance != null && Instance != this) Destroy(gameObject);
-
-
-        Instance = this;
+        if (Instance != null && Instance != this)
+            Destroy(gameObject);
+        else
+            Instance = this;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
