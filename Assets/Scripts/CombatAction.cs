@@ -14,7 +14,6 @@ public class CombatAction : ScriptableObject
 
     [Header("Damage")]
     public int Damage;
-    public GameObject ProjectilePrefab;
 
     [Header("Heal")]
     public int HealAmount;
