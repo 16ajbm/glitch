@@ -28,6 +28,7 @@ public class CombatActionUI : MonoBehaviour
 
         visualContainer.SetActive(true);
 
+
         for (int i = 0; i < combatActionButtons.Length; i++)
         {
             Debug.Log("CombatActionUI: " + i + " " + character.CombatActions.Count);
