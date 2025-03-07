@@ -5,11 +5,14 @@ using UnityEngine.Events;
 
 public class TurnManager : MonoBehaviour
 {
-    [SerializeField] private List<Character> characters;
+    // Should be private, but need it for test example (I don't know)
+    // how to set characters (maybe a constructor?)
+    [SerializeField] public List<Character> characters;
 
     [SerializeField] private float nextTurnDelay = 1f;
 
-    private int currentCharacterIndex = 0;
+    // This should be zero, I am off in a modulo calculation somewhere
+    private int currentCharacterIndex = -1;
 
     public Character CurrentCharacter;
 
