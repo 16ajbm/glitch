@@ -11,8 +11,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0d9e7e6bab569a45a85154c90f6c4fd, type: 3}
   m_Name: Attack
-  m_EditorClassIdentifier:
-  DisplayName:
+  m_EditorClassIdentifier: 
+  DisplayName: Attack (5)
   ActionType: 0
-  Damage: 0
+  Damage: 5
   HealAmount: 0
