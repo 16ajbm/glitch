@@ -10,7 +10,7 @@ public class BeatRoller : MonoBehaviour
     public GameObject wholeBeat;
     public GameObject halfBeat;
     public float bpm = 130f;
-    private float halfDt; // Time between half beats
+    private float halfBeatDelta; // Time between half beats
     private float halfBeatDist; // Distance between half beats
     private float halfBeatSpeed;
     private int rangeStart = - 1920 / 2;
@@ -45,9 +45,9 @@ public class BeatRoller : MonoBehaviour
         allBeats = new GameObject[numBeatDivisions];
         timeElapsed = new float[numBeatDivisions];
 
-        halfDt = (60f / bpm) / 2f;
+        halfBeatDelta = (60f / bpm) / 2f;
         halfBeatDist = (rangeEnd - rangeStart) / (numBeatDivisions);
-        halfBeatSpeed = halfBeatDist / halfDt;
+        halfBeatSpeed = halfBeatDist / halfBeatDelta;
 
        for (int i = 0; i < numBeatDivisions; i++) {
             float xCalc = rangeStart + i * halfBeatDist;
@@ -72,7 +72,7 @@ public class BeatRoller : MonoBehaviour
     {
         if (audio.time >= firstBeatOffset) {
 
-            ball.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition = Vector2.Lerp(ballOrigin, ballTarget, Mathf.PingPong(Time.time / (halfDt), 1));
+            ball.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition = Vector2.Lerp(ballOrigin, ballTarget, Mathf.PingPong(Time.time / halfBeatDelta, 1));
 
             // Shift beats left
             for (int i = 0; i < numBeatDivisions; i++) {
