@@ -76,13 +76,12 @@ public class BeatRoller : MonoBehaviour
 
     void Update()
     {
+        // Apply the volume value from the editor to the AudioSource
+        if (audio != null)
+            audio.volume = volume;
+
         if (audio.time >= firstBeatOffset)
         {
-            // Apply the volume value from the editor to the AudioSource
-            if (audio != null)
-                audio.volume = volume;
-
-
             // Move ball up and down with a period of 1 beat
             ball.transform.position = Vector3.Lerp(ballOrigin, ballTarget, Mathf.PingPong(Time.time * halfBeatSpeed, 1));
 
