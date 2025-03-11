@@ -1,118 +1,293 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using System.Collections;
 
 public class BeatRoller : MonoBehaviour
 {
-    public float firstBeatOffset = 0.55f;
-    new public AudioSource audio;
-    public Canvas parentCanvas;
-    [Range(0f, 1f), SerializeField] float volume = 1f;
+	#region Music
+	new public AudioSource audio;
+	[Range(0f, 1f), SerializeField] float volume = 1f;
+	public float bpm = 130f;
+	public float firstBeatOffset = 0.55f;
+	#endregion
 
-    public GameObject ball;
-    public GameObject wholeBeat;
-    public GameObject halfBeat;
-    public float bpm = 130f;
-    private float halfBeatDelta; // Time between half beats
-    private float halfBeatDist; // Distance between half beats
-    private float halfBeatSpeed;
-    private int rangeStart = -1920 / 2;
-    private int rangeEnd = 1920 / 2;
-    private int rangeLen;
-    private int numBeatDivisions = 16; // Number of indicators on screen
-    private GameObject[] allBeats; // Array to hold copied sprites
-    private Vector2 ballOrigin; // Bottom of ball bounce
-    private Vector2 ballTarget; // Peak of ball bounce
-    private float[] timeElapsed; // Helps to calculate how much beat sprites should shift each frame
-    private int iter = 0; // Help to make random golden notes
-    private Color white;
-    private Color yellow;
+	#region UI
+	public Canvas parentCanvas;
+	private int rangeStart = -1920 / 2;
+	private int rangeEnd = 1920 / 2;
+	private int rangeLen = 1920;
+	private int numBeatDivisions = 16;
+	private Vector2 ballOrigin;
+	private Vector2 ballTarget;
+	#endregion
 
-    void Start()
-    {
-        // Set up default and golden note colors
-        white = new Color(1f, 1f, 1f);
-        white.a = 1;
-        yellow = new Color(1f, 1f, 0f);
-        yellow.a = 1;
+	#region Sprites
+	public GameObject ball;
+	public GameObject wholeBeat;
+	public GameObject halfBeat;
+	private Beat[] allBeats;
+	#endregion
 
-        ballOrigin = ball.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition;
-        ballTarget = ballOrigin + new Vector2(0, 150);
+	#region Calculations
+	private float halfBeatDelta;
+	private float halfBeatDist;
+	private float halfBeatSpeed;
+	private int frameCount;
+	#endregion
 
-        rangeLen = rangeEnd - rangeStart;
+	#region Pattern
+	public TMP_Text timer;
+    public TMP_Text goldenNoteCounterDisplay;
+    public TMP_Text multiplierDisplay;
+	private float timerVal = 10f;
+	public GameObject patternBackground;
+	public GameObject arrow;
+	private GameObject[] allArrows;
+	private PatternDisplay pDisp;
+	private bool makePattern = false;
+	private bool patternHasBeenMade = false;
+	private int patternLen;
+	private int[] pattern;
+	private bool turnStarted;
+	private bool turnEnded;
+	private int patternIndex = 0;
+	private float score = 0f;
+	private float scoreMultiplier = 1f;
+	private int numGoldenNotes = 0;
+	private int beatIndex;
+	public float tolerance = 75;
+	public float defaultScore = 50;
+	private bool madeFirstMove = false;
+	private bool madeMoveThisRound = false;
+	private int numBlueNotes = 0;
+	private bool finalScoringDone = false;
+	#endregion
 
-        wholeBeat.SetActive(false);
-        halfBeat.SetActive(false);
-        ball.SetActive(true);
+	void Start()
+	{
+		wholeBeat.SetActive(false);
+		halfBeat.SetActive(false);
+		ball.SetActive(true);
 
-        allBeats = new GameObject[numBeatDivisions];
-        timeElapsed = new float[numBeatDivisions];
+		ballOrigin = ball.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition;
+		ballTarget = ballOrigin + new Vector2(0, 150);
 
-        halfBeatDelta = (60f / bpm) / 2f;
-        halfBeatDist = (rangeEnd - rangeStart) / (numBeatDivisions);
-        halfBeatSpeed = halfBeatDist / halfBeatDelta;
+		allBeats = new Beat[numBeatDivisions];
 
-        for (int i = 0; i < numBeatDivisions; i++)
-        {
-            float xCalc = rangeStart + i * halfBeatDist;
-            if (i % 2 == 0)
-            {
-                allBeats[i] = Instantiate(wholeBeat);
-            }
-            else
-            {
-                allBeats[i] = Instantiate(halfBeat);
-            }
+		halfBeatDelta = (60f / bpm) / 2;
+		halfBeatDist = rangeLen / numBeatDivisions;
+		halfBeatSpeed = halfBeatDist / halfBeatDelta;
 
-            allBeats[i].transform.SetParent(parentCanvas.transform, false);
-            Image img = allBeats[i].GetComponent<Image>();
-            RectTransform rt = img.GetComponent<RectTransform>();
-            rt.anchoredPosition = new Vector2(xCalc, halfBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
+		for (int i = 0; i < numBeatDivisions; i++)
+		{
+			if (i % 2 == 0)
+			{
+				allBeats[i] = new Beat("WholeBeat", wholeBeat, parentCanvas);
+			} else
+			{
+				allBeats[i] = new Beat("HalfBeat", halfBeat, parentCanvas);
+			}
 
-            allBeats[i].SetActive(true);
-        }
+			allBeats[i].SetPos(rangeStart + i * halfBeatDist, wholeBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
 
-        audio.Play();
-    }
+			allBeats[i].Activate();
+		}
 
-    void Update()
-    {
-        // Apply the volume value from the editor to the AudioSource
-        if (audio != null)
+		pDisp = new PatternDisplay(patternBackground, parentCanvas, arrow, timer);
+
+		audio.Play();
+	}
+
+	void Update()
+	{
+		if (audio != null)
             audio.volume = volume;
 
-        if (audio.time >= firstBeatOffset)
-        {
-            // Move ball up and down with a period of 1 beat
-            ball.transform.position = Vector3.Lerp(ballOrigin, ballTarget, Mathf.PingPong(Time.time * halfBeatSpeed, 1));
+		if (audio.time <= firstBeatOffset) return;
 
-            ball.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition = Vector2.Lerp(ballOrigin, ballTarget, Mathf.PingPong(Time.time / halfBeatDelta, 1));
+		ball.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition = Vector2.Lerp(ballOrigin, ballTarget, Mathf.PingPong(Time.time / halfBeatDelta, 1));
 
-            // Shift beats left
-            for (int i = 0; i < numBeatDivisions; i++)
-            {
-                GameObject currBeat = allBeats[i];
+		if (makePattern && !patternHasBeenMade)
+		{
+			patternHasBeenMade = true;
+			pattern = Pattern.MakePattern(patternLen);
+			Debug.Log("Pattern: " + string.Join(", ", pattern));
+			allArrows = pDisp.Display(pattern);
+		}
 
-                Image currIMG = currBeat.GetComponent<Image>();
-                RectTransform currRT = currIMG.GetComponent<RectTransform>();
+		if (makePattern && !turnStarted)
+		{
+			timerVal -= Time.deltaTime;
+			if (timerVal <= 0)
+			{
+				timerVal = 10f;
+				pDisp.Cleanup(allArrows);
+				makePattern = false;
+				turnStarted = true;
+                goldenNoteCounterDisplay.gameObject.SetActive(true);
+                multiplierDisplay.gameObject.SetActive(true);
+			}
+			timer.text = timerVal.ToString("F2");
+		}
 
-                // Wrap to end of range
-                if (currRT.anchoredPosition.x <= rangeStart)
-                {
-                    currIMG.color = white;
+		ShiftBeats();
+		frameCount++;
 
-                    currRT.anchoredPosition = new Vector2(rangeEnd, halfBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
+		if (turnEnded) return;
 
-                    // Insert random golden notes
-                    if (iter % 17 == 0 && currBeat.CompareTag("WholeBeat"))
-                    {
-                        currIMG.color = yellow;
-                    }
-                }
+		if (turnStarted && patternIndex == patternLen)
+		{
+			turnStarted = false;
+			turnEnded = true;
+			madeFirstMove = false;
+			patternIndex = 0;
+			numGoldenNotes = 0;
+			numBlueNotes = 0;
+			//Debug.Log($"Final Score: {score}");
+			finalScoringDone = true;
+            goldenNoteCounterDisplay.gameObject.SetActive(false);
+            multiplierDisplay.gameObject.SetActive(false);
+			return;
+		}
 
-                currRT.anchoredPosition = new Vector2(currRT.anchoredPosition.x - (halfBeatSpeed * (Time.time - timeElapsed[i])), wholeBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
-                timeElapsed[i] = Time.time;
-            }
-            iter++;
-        }
-    }
+        goldenNoteCounterDisplay.text = "Golden Notes: " + numGoldenNotes.ToString();
+        multiplierDisplay.text = "Multiplier: " + scoreMultiplier.ToString("F1");
+
+		if (turnStarted && Input.GetKeyDown("up"))
+		{
+			madeMoveThisRound = true;
+			if (pattern[patternIndex] == 1)
+			{
+				CheckCorrectness(true);
+			} else
+			{
+				CheckCorrectness(false);
+			}
+		} else if (turnStarted && Input.GetKeyDown("right"))
+		{
+			madeMoveThisRound = true;
+			if (pattern[patternIndex] == 2)
+			{
+				CheckCorrectness(true);
+			} else
+			{
+				CheckCorrectness(false);
+			}
+		} else if (turnStarted && Input.GetKeyDown("down"))
+		{
+			madeMoveThisRound = true;
+			if (pattern[patternIndex] == 3)
+			{
+				CheckCorrectness(true);
+			} else
+			{
+				CheckCorrectness(false);
+			}
+		} else if (turnStarted && Input.GetKeyDown("left"))
+		{
+			madeMoveThisRound = true;
+			if (pattern[patternIndex] == 4)
+			{
+				CheckCorrectness(true);
+			} else
+			{
+				CheckCorrectness(false);
+			}
+		}
+
+		if (turnStarted && madeFirstMove && madeMoveThisRound) 
+		{
+			patternIndex++;
+			beatIndex = (beatIndex + 2) % numBeatDivisions;
+			madeMoveThisRound = false;
+		}
+
+	}
+
+	void ShiftBeats()
+	{
+		for (int i = 0; i < numBeatDivisions; i++)
+		{
+			Beat currBeat = allBeats[i];
+
+			if (currBeat.GetXPos() < rangeStart)
+			{
+				if (turnStarted && numBlueNotes < patternLen)
+				{
+					currBeat.SetTurnColor();
+					if (currBeat.spriteName == "WholeBeat") 
+					{
+						numBlueNotes++;
+						if (numBlueNotes == 1)
+						{
+							beatIndex = i;
+							madeFirstMove = true;
+						}
+					}
+				}
+				else
+				{
+					currBeat.ResetColor();
+				}
+
+				currBeat.SetPos(rangeEnd, wholeBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
+				
+				if (frameCount % 17 == 0 && currBeat.spriteName == "WholeBeat")
+				{
+					//currBeat.SetGolden(true);
+					currBeat.SetGolden();
+				}
+			}
+
+			currBeat.SetPos(currBeat.GetXPos() - halfBeatSpeed * Time.deltaTime, wholeBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
+		}
+	}
+
+	public void Score(int len, System.Action<float> onScoreCalculated)
+	{
+		score = 0;
+		makePattern = true;
+		patternLen = len;
+		turnEnded = false;
+		finalScoringDone = false;
+
+		StartCoroutine(WaitForFinalScore(onScoreCalculated));
+	}
+
+	void CheckCorrectness(bool keyCorrect)
+	{
+
+		if (keyCorrect && allBeats[beatIndex].GetDistFromCenter() <= tolerance)
+		{
+			Debug.Log($"HIT: {patternIndex}");
+			if (allBeats[beatIndex].IsGolden())
+			{
+				numGoldenNotes++;
+				score += defaultScore * 3 * scoreMultiplier;
+			}
+			else
+			{
+				score += defaultScore * scoreMultiplier;
+			}
+			allBeats[beatIndex].SetColor(new Color(0f, 1f, 0f));
+			scoreMultiplier += 0.1f;
+		} 
+		else
+		{
+			Debug.Log($"MISS: {patternIndex}");
+			scoreMultiplier = 1;
+			return;
+		}
+	}
+
+	private IEnumerator WaitForFinalScore(System.Action<float> onScoreCalculated)
+	{
+		while (!finalScoringDone)
+		{
+			yield return null;
+		}
+
+		onScoreCalculated?.Invoke(score);
+	}
 }
