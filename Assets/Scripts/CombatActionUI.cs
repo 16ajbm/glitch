@@ -31,7 +31,6 @@ public class CombatActionUI : MonoBehaviour
 
         for (int i = 0; i < combatActionButtons.Length; i++)
         {
-            Debug.Log("CombatActionUI: " + i + " " + character.CombatActions.Count);
 
             if (i < character.CombatActions.Count)
             {

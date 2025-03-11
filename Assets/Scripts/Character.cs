@@ -54,7 +54,6 @@ public class Character : MonoBehaviour
 
     public void Heal(int HealAmount)
     {
-        Debug.Log($"{name} healed for {HealAmount}");
         currentHealth += Math.Min(HealAmount, maxHealth - currentHealth);
         OnHealthChange?.Invoke();
 
@@ -63,7 +62,6 @@ public class Character : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        Debug.Log($"{name} took {damage} damage");
         currentHealth -= damage;
         OnHealthChange?.Invoke();
         if (currentHealth <= 0) Die();

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Heal
   m_EditorClassIdentifier: 
   DisplayName: Heal (5)
-  ActionType: 0
-  Damage: 5
-  HealAmount: 0
+  ActionType: 1
+  Damage: 0
+  HealAmount: 5

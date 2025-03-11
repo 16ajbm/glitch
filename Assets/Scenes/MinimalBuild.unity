@@ -732,8 +732,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1513076e9d5d51740b8f48b403206c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthFiller: {fileID: 0}
-  character: {fileID: 0}
+  healthFiller: {fileID: 1606485305}
+  character: {fileID: 955316496}
 --- !u!114 &505523610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1177,6 +1177,7 @@ MonoBehaviour:
   firstBeatOffset: 0.55
   audio: {fileID: 167253730}
   parentCanvas: {fileID: 1524367151}
+  volume: 0
   ball: {fileID: 445385171}
   wholeBeat: {fileID: 668668721}
   halfBeat: {fileID: 1171999174}
@@ -1288,8 +1289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1513076e9d5d51740b8f48b403206c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthFiller: {fileID: 0}
-  character: {fileID: 0}
+  healthFiller: {fileID: 275009392}
+  character: {fileID: 1025365704}
 --- !u!114 &804883835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1385,7 +1386,9 @@ MonoBehaviour:
   currentHealth: 20
   isPlayer: 1
   maxHealth: 20
-  CombatActions: []
+  CombatActions:
+  - {fileID: 11400000, guid: 31c18d88a59c39e43b523b790e8c90e1, type: 2}
+  - {fileID: 11400000, guid: c8eb1e244389cef4fb33b1be67ad57ee, type: 2}
   target: {fileID: 1025365704}
 --- !u!4 &955316497
 Transform:
@@ -1474,7 +1477,9 @@ MonoBehaviour:
   currentHealth: 20
   isPlayer: 0
   maxHealth: 20
-  CombatActions: []
+  CombatActions:
+  - {fileID: 11400000, guid: 31c18d88a59c39e43b523b790e8c90e1, type: 2}
+  - {fileID: 11400000, guid: c8eb1e244389cef4fb33b1be67ad57ee, type: 2}
   target: {fileID: 955316496}
 --- !u!4 &1025365705
 Transform:
