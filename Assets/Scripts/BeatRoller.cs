@@ -57,7 +57,9 @@ public class BeatRoller : MonoBehaviour
 	private int numGoldenNotes = 0;
 	private int beatIndex;
 	public float tolerance = 75;
-	public float defaultScore = 50;
+	public float defaultScore = 50f;
+	public float multiplierIncrease = 0.1f;
+	public float goldenNoteMultiplier = 3;
 	private bool madeFirstMove = false;
 	private bool madeMoveThisRound = false;
 	private int numBlueNotes = 0;
@@ -235,7 +237,6 @@ public class BeatRoller : MonoBehaviour
 				
 				if (frameCount % 17 == 0 && currBeat.spriteName == "WholeBeat")
 				{
-					//currBeat.SetGolden(true);
 					currBeat.SetGolden();
 				}
 			}
@@ -264,14 +265,14 @@ public class BeatRoller : MonoBehaviour
 			if (allBeats[beatIndex].IsGolden())
 			{
 				numGoldenNotes++;
-				score += defaultScore * 3 * scoreMultiplier;
+				score += defaultScore * goldenNoteMultiplier * scoreMultiplier;
 			}
 			else
 			{
 				score += defaultScore * scoreMultiplier;
 			}
 			allBeats[beatIndex].SetColor(new Color(0f, 1f, 0f));
-			scoreMultiplier += 0.1f;
+			scoreMultiplier += multiplierIncrease;
 		} 
 		else
 		{

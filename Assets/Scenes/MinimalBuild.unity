@@ -1325,6 +1325,8 @@ MonoBehaviour:
   arrow: {fileID: 1164445348}
   tolerance: 75
   defaultScore: 50
+  multiplierIncrease: 0.1
+  goldenNoteMultiplier: 3
 --- !u!4 &702553996
 Transform:
   m_ObjectHideFlags: 0
