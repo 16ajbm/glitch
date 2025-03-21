@@ -2,13 +2,10 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    public GameObject firstLevel;
+
     void Start()
     {
-        LevelProgress.UnlockLevel("Level1");
-    }
-
-    void Update()
-    {
-        
+        LevelProgress.UnlockLevel(firstLevel.GetComponent<LevelClick>().levelName);
     }
 }

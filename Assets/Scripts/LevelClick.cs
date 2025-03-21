@@ -28,7 +28,7 @@ public class LevelClick : MonoBehaviour, IPointerClickHandler
         if (LevelProgress.IsLevelUnlocked(levelName))
         {
             Debug.Log($"Level: {levelName} selected.");
-            //LoadLevel();
+            LoadLevel();
         } else
         {
             Debug.Log($"Level: {levelName} is locked.");
