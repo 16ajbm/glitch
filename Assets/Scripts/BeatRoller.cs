@@ -198,7 +198,7 @@ public class BeatRoller : MonoBehaviour
 			}
 		}
 
-		if (turnStarted && madeFirstMove && madeMoveThisRound) 
+		if (turnStarted && madeFirstMove && madeMoveThisRound)
 		{
 			patternIndex++;
 			beatIndex = (beatIndex + 2) % numBeatDivisions;
@@ -218,7 +218,7 @@ public class BeatRoller : MonoBehaviour
 				if (turnStarted && numBlueNotes < patternLen)
 				{
 					currBeat.SetTurnColor();
-					if (currBeat.spriteName == "WholeBeat") 
+					if (currBeat.spriteName == "WholeBeat")
 					{
 						numBlueNotes++;
 						if (numBlueNotes == 1)
@@ -234,7 +234,7 @@ public class BeatRoller : MonoBehaviour
 				}
 
 				currBeat.SetPos(rangeEnd, wholeBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
-				
+
 				if (frameCount % 17 == 0 && currBeat.spriteName == "WholeBeat")
 				{
 					currBeat.SetGolden();
@@ -273,7 +273,7 @@ public class BeatRoller : MonoBehaviour
 			}
 			allBeats[beatIndex].SetColor(new Color(0f, 1f, 0f));
 			scoreMultiplier += multiplierIncrease;
-		} 
+		}
 		else
 		{
 			Debug.Log($"MISS: {patternIndex}");
@@ -289,6 +289,7 @@ public class BeatRoller : MonoBehaviour
 			yield return null;
 		}
 
+		Debug.Log($"WaitForFinalScore: {score}");
 		onScoreCalculated?.Invoke(score);
 	}
 }

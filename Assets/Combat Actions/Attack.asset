@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Attack (5)
   ActionType: 0
-  Damage: 5
+  Damage: 0
   HealAmount: 0
+  Length: 5

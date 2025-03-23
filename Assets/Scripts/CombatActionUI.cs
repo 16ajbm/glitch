@@ -7,6 +7,13 @@ public class CombatActionUI : MonoBehaviour
     [SerializeField] private GameObject visualContainer;
     [SerializeField] private Button[] combatActionButtons;
 
+    // This is terribly gross and should be refactored. Having this here
+    // is giving the CombatActionUI class too much responsibility. Should ideally be
+    // handled by the TurnManager and use events to decouple the classes.
+    #region Rhythm
+    [SerializeField] private BeatRoller beatRoller;
+    #endregion
+
     void OnEnable()
     {
         TurnManager.Instance.OnTurnStart.AddListener(OnBeginTurn);
@@ -40,7 +47,7 @@ public class CombatActionUI : MonoBehaviour
                 combatActionButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = combatAction.DisplayName;
                 combatActionButtons[i].onClick.RemoveAllListeners();
 
-                combatActionButtons[i].onClick.AddListener(() => OnClickCombatAction(combatAction));
+                combatActionButtons[i].onClick.AddListener(() => OnClickCharacterCombatAction(character, combatAction));
             }
             else
             {
@@ -54,8 +61,22 @@ public class CombatActionUI : MonoBehaviour
         visualContainer.SetActive(false);
     }
 
-    public void OnClickCombatAction(CombatAction combatAction)
+    public void OnClickCharacterCombatAction(Character character, CombatAction combatAction)
     {
+        if (character.isPlayer)
+        {
+            beatRoller.Score(combatAction.Length, (score) =>
+            {
+                Debug.Log($"Score: {score}");
+                Debug.Log($"Combat Action original damage: {combatAction.Damage}");
+                combatAction = combatAction.applyModifier(combatAction, score);
+                Debug.Log($"Combat Action modified damage: {combatAction.Damage}");
+                character.CastCombatAction(combatAction);
+            });
+
+            return;
+        }
+
         TurnManager.Instance.CurrentCharacter.CastCombatAction(combatAction);
     }
 }

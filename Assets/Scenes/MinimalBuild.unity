@@ -2507,6 +2507,7 @@ MonoBehaviour:
   - {fileID: 1033259962}
   - {fileID: 266850563}
   - {fileID: 477615737}
+  beatRoller: {fileID: 702553995}
 --- !u!1 &1550151008
 GameObject:
   m_ObjectHideFlags: 0

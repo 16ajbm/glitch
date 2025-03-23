@@ -16,3 +16,4 @@ MonoBehaviour:
   ActionType: 1
   Damage: 0
   HealAmount: 5
+  Length: 5

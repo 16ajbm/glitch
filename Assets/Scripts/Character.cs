@@ -23,7 +23,6 @@ public class Character : MonoBehaviour
 
     #region Events
     public event UnityAction OnHealthChange;
-    // TODO - remove the static event (this probably shouldn't be static)
     public static  event UnityAction<Character> OnDie;
     #endregion
 
@@ -35,6 +34,7 @@ public class Character : MonoBehaviour
 
     public void CastCombatAction(CombatAction combatAction)
     {
+        Debug.Log($"Combat action: {combatAction.DisplayName}");
         if (combatAction.Damage > 0)
         {
             StartCoroutine(AttackOpponent(combatAction));
@@ -43,8 +43,6 @@ public class Character : MonoBehaviour
         {
             Heal(combatAction.HealAmount);
         }
-
-
     }
 
     public float GetHealthPercentage()
