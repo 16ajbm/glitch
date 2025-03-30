@@ -53,11 +53,13 @@ public class TurnManager : MonoBehaviour
     {
         currentCharacterIndex = (currentCharacterIndex + 1) % characters.Count;
         CurrentCharacter = characters[currentCharacterIndex];
+        Debug.Log($"BeginNextTurn: {CurrentCharacter.name}");
         OnTurnStart?.Invoke(CurrentCharacter);
     }
 
     public void EndCurrentTurn()
     {
+        Debug.Log($"EndCurrentTurn: {CurrentCharacter.name}");
         OnTurnEnd?.Invoke(CurrentCharacter);
         Invoke(nameof(BeginNextTurn), nextTurnDelay);
     }
