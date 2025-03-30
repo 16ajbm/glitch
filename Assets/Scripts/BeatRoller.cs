@@ -146,7 +146,6 @@ public class BeatRoller : MonoBehaviour
 			patternIndex = 0;
 			numGoldenNotes = 0;
 			numBlueNotes = 0;
-			//Debug.Log($"Final Score: {score}");
 			finalScoringDone = true;
             goldenNoteCounterDisplay.gameObject.SetActive(false);
             multiplierDisplay.gameObject.SetActive(false);
@@ -261,7 +260,7 @@ public class BeatRoller : MonoBehaviour
 
 		if (keyCorrect && allBeats[beatIndex].GetDistFromCenter() <= tolerance)
 		{
-			Debug.Log($"HIT: {patternIndex}");
+			// Debug.Log($"HIT: {patternIndex}");
 			if (allBeats[beatIndex].IsGolden())
 			{
 				numGoldenNotes++;
@@ -276,7 +275,7 @@ public class BeatRoller : MonoBehaviour
 		}
 		else
 		{
-			Debug.Log($"MISS: {patternIndex}");
+			// Debug.Log($"MISS: {patternIndex}");
 			scoreMultiplier = 1;
 			return;
 		}

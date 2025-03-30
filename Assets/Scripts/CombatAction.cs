@@ -24,6 +24,7 @@ public class CombatAction : ScriptableObject
 
     public CombatAction applyModifier(CombatAction combatAction, float modifier)
     {
+        // Instantiate a new CombatAction to avoid modifying the original
          CombatAction modifiableAction = Instantiate(combatAction);
 
         if (modifiableAction.ActionType == Type.Heal)

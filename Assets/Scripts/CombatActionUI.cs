@@ -4,8 +4,14 @@ using TMPro;
 
 public class CombatActionUI : MonoBehaviour
 {
+    #region Properties
+    private bool abilityUsedThisTurn = false;
+    #endregion
+
+    #region UI
     [SerializeField] private GameObject visualContainer;
     [SerializeField] private Button[] combatActionButtons;
+    #endregion
 
     // This is terribly gross and should be refactored. Having this here
     // is giving the CombatActionUI class too much responsibility. Should ideally be
@@ -29,11 +35,14 @@ public class CombatActionUI : MonoBehaviour
     void OnBeginTurn(Character character)
     {
         if (!character.isPlayer)
-        {
             return;
-        }
 
+        // Reset flags & UI
+        abilityUsedThisTurn = false;
+        Debug.Log("Set combat action buttons interactable to true");
+        SetCombatActionButtonsInteractable(true);
         visualContainer.SetActive(true);
+
 
 
         for (int i = 0; i < combatActionButtons.Length; i++)
@@ -63,8 +72,16 @@ public class CombatActionUI : MonoBehaviour
 
     public void OnClickCharacterCombatAction(Character character, CombatAction combatAction)
     {
+        if (abilityUsedThisTurn)
+            return;
+
+        abilityUsedThisTurn = true;
+        Debug.Log("Set combat action buttons interactable to false");
+        SetCombatActionButtonsInteractable(false);
+
         if (character.isPlayer)
         {
+            Debug.Log($"OnClickCharcterCombatAction Character: {character.gameObject.name}, action: {combatAction.DisplayName}");
             beatRoller.Score(combatAction.Length, (score) =>
             {
                 Debug.Log($"Score: {score}");
@@ -78,5 +95,11 @@ public class CombatActionUI : MonoBehaviour
         }
 
         TurnManager.Instance.CurrentCharacter.CastCombatAction(combatAction);
+    }
+
+    private void SetCombatActionButtonsInteractable(bool interactable)
+    {
+        foreach (var button in combatActionButtons)
+            button.interactable = interactable;
     }
 }
