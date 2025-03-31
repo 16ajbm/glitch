@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 
+
 public class BeatRoller : MonoBehaviour
 {
 	#region Music
@@ -53,6 +54,7 @@ public class BeatRoller : MonoBehaviour
 	private bool turnEnded;
 	private int patternIndex = 0;
 	private float score = 0f;
+	private float maxScore = 0f;
 	private float scoreMultiplier = 1f;
 	private int numGoldenNotes = 0;
 	private int beatIndex;
@@ -252,7 +254,7 @@ public class BeatRoller : MonoBehaviour
 		}
 	}
 
-	public void Score(int len, System.Action<float> onScoreCalculated)
+	public void Score(int len, System.Action<(float, float)> onScoreCalculated)
 	{
 		score = 0;
 		makePattern = true;
@@ -262,6 +264,8 @@ public class BeatRoller : MonoBehaviour
 		// Resetting this is critical to ensure the display is triggered each turn
 		patternHasBeenMade = false;
 
+		// Setting max score
+		maxScore = patternLen * defaultScore * goldenNoteMultiplier * scoreMultiplier;
 
 		StartCoroutine(WaitForFinalScore(onScoreCalculated));
 	}
@@ -292,7 +296,7 @@ public class BeatRoller : MonoBehaviour
 		}
 	}
 
-	private IEnumerator WaitForFinalScore(System.Action<float> onScoreCalculated)
+	private IEnumerator WaitForFinalScore(System.Action<(float, float)> onScoreCalculated)
 	{
 		while (!finalScoringDone)
 		{
@@ -300,6 +304,6 @@ public class BeatRoller : MonoBehaviour
 		}
 
 		Debug.Log($"WaitForFinalScore: {score}");
-		onScoreCalculated?.Invoke(score);
+		onScoreCalculated?.Invoke((score, maxScore));
 	}
 }

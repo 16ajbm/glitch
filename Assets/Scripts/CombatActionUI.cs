@@ -82,12 +82,13 @@ public class CombatActionUI : MonoBehaviour
         if (character.isPlayer)
         {
             Debug.Log($"OnClickCharcterCombatAction Character: {character.gameObject.name}, action: {combatAction.DisplayName}");
-            beatRoller.Score(combatAction.Length, (score) =>
+            beatRoller.Score(combatAction.Length, (scorePair) =>
             {
-                Debug.Log($"Score: {score}");
-                Debug.Log($"Combat Action original damage: {combatAction.Damage}");
-                combatAction = combatAction.applyModifier(combatAction, score);
-                Debug.Log($"Combat Action modified damage: {combatAction.Damage}");
+                float score = scorePair.Item1;
+                float maxScore = scorePair.Item2;
+                float modifier = 1 + score / maxScore;
+                Debug.Log($"Modifier: {modifier}");
+                combatAction = combatAction.applyModifier(combatAction, modifier);
                 character.CastCombatAction(combatAction);
             });
 
