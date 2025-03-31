@@ -38,8 +38,8 @@ public class BeatRoller : MonoBehaviour
 
 	#region Pattern
 	public TMP_Text timer;
-    public TMP_Text goldenNoteCounterDisplay;
-    public TMP_Text multiplierDisplay;
+	public TMP_Text goldenNoteCounterDisplay;
+	public TMP_Text multiplierDisplay;
 	private float timerVal = 10f;
 	public GameObject patternBackground;
 	public GameObject arrow;
@@ -86,7 +86,8 @@ public class BeatRoller : MonoBehaviour
 			if (i % 2 == 0)
 			{
 				allBeats[i] = new Beat("WholeBeat", wholeBeat, parentCanvas);
-			} else
+			}
+			else
 			{
 				allBeats[i] = new Beat("HalfBeat", halfBeat, parentCanvas);
 			}
@@ -104,7 +105,7 @@ public class BeatRoller : MonoBehaviour
 	void Update()
 	{
 		if (audio != null)
-            audio.volume = volume;
+			audio.volume = volume;
 
 		if (audio.time <= firstBeatOffset) return;
 
@@ -127,8 +128,8 @@ public class BeatRoller : MonoBehaviour
 				pDisp.Cleanup(allArrows);
 				makePattern = false;
 				turnStarted = true;
-                goldenNoteCounterDisplay.gameObject.SetActive(true);
-                multiplierDisplay.gameObject.SetActive(true);
+				goldenNoteCounterDisplay.gameObject.SetActive(true);
+				multiplierDisplay.gameObject.SetActive(true);
 			}
 			timer.text = timerVal.ToString("F2");
 		}
@@ -147,13 +148,13 @@ public class BeatRoller : MonoBehaviour
 			numGoldenNotes = 0;
 			numBlueNotes = 0;
 			finalScoringDone = true;
-            goldenNoteCounterDisplay.gameObject.SetActive(false);
-            multiplierDisplay.gameObject.SetActive(false);
+			goldenNoteCounterDisplay.gameObject.SetActive(false);
+			multiplierDisplay.gameObject.SetActive(false);
 			return;
 		}
 
-        goldenNoteCounterDisplay.text = "Golden Notes: " + numGoldenNotes.ToString();
-        multiplierDisplay.text = "Multiplier: " + scoreMultiplier.ToString("F1");
+		goldenNoteCounterDisplay.text = "Golden Notes: " + numGoldenNotes.ToString();
+		multiplierDisplay.text = "Multiplier: " + scoreMultiplier.ToString("F1");
 
 		if (turnStarted && Input.GetKeyDown("up"))
 		{
@@ -161,37 +162,44 @@ public class BeatRoller : MonoBehaviour
 			if (pattern[patternIndex] == 1)
 			{
 				CheckCorrectness(true);
-			} else
+			}
+			else
 			{
 				CheckCorrectness(false);
 			}
-		} else if (turnStarted && Input.GetKeyDown("right"))
+		}
+		else if (turnStarted && Input.GetKeyDown("right"))
 		{
 			madeMoveThisRound = true;
 			if (pattern[patternIndex] == 2)
 			{
 				CheckCorrectness(true);
-			} else
+			}
+			else
 			{
 				CheckCorrectness(false);
 			}
-		} else if (turnStarted && Input.GetKeyDown("down"))
+		}
+		else if (turnStarted && Input.GetKeyDown("down"))
 		{
 			madeMoveThisRound = true;
 			if (pattern[patternIndex] == 3)
 			{
 				CheckCorrectness(true);
-			} else
+			}
+			else
 			{
 				CheckCorrectness(false);
 			}
-		} else if (turnStarted && Input.GetKeyDown("left"))
+		}
+		else if (turnStarted && Input.GetKeyDown("left"))
 		{
 			madeMoveThisRound = true;
 			if (pattern[patternIndex] == 4)
 			{
 				CheckCorrectness(true);
-			} else
+			}
+			else
 			{
 				CheckCorrectness(false);
 			}
@@ -251,6 +259,9 @@ public class BeatRoller : MonoBehaviour
 		patternLen = len;
 		turnEnded = false;
 		finalScoringDone = false;
+		// Resetting this is critical to ensure the display is triggered each turn
+		patternHasBeenMade = false;
+
 
 		StartCoroutine(WaitForFinalScore(onScoreCalculated));
 	}
