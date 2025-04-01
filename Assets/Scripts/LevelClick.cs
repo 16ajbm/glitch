@@ -6,11 +6,11 @@ public class LevelClick : MonoBehaviour, IPointerClickHandler
 {
     public string levelName;
     public GameObject lockedSprite;
-    
+
     void Start()
     {
-        if (LevelProgress.IsLevelUnlocked(levelName))
-        {   
+        if (LevelManager.IsLevelUnlocked(levelName))
+        {
             lockedSprite.SetActive(false);
         } else
         {
@@ -25,7 +25,7 @@ public class LevelClick : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (LevelProgress.IsLevelUnlocked(levelName))
+        if (LevelManager.IsLevelUnlocked(levelName))
         {
             Debug.Log($"Level: {levelName} selected.");
             LoadLevel();
