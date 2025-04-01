@@ -87,13 +87,15 @@ public class BeatRoller : MonoBehaviour
 			if (i % 2 == 0)
 			{
 				allBeats[i] = new Beat("WholeBeat", wholeBeat, parentCanvas);
+				allBeats[i].SetPos(rangeStart + i * halfBeatDist, wholeBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
 			}
 			else
 			{
 				allBeats[i] = new Beat("HalfBeat", halfBeat, parentCanvas);
+				allBeats[i].SetPos(rangeStart + i * halfBeatDist, halfBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
 			}
 
-			allBeats[i].SetPos(rangeStart + i * halfBeatDist, wholeBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
+			//allBeats[i].SetPos(rangeStart + i * halfBeatDist, wholeBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
 
 			allBeats[i].Activate();
 		}
@@ -240,16 +242,30 @@ public class BeatRoller : MonoBehaviour
 				{
 					currBeat.ResetColor();
 				}
-
-				currBeat.SetPos(rangeEnd, wholeBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
+				
+				if (currBeat.spriteName == "WholeBeat")
+				{
+					currBeat.SetPos(rangeEnd, wholeBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
+				}
+				else
+				{
+					currBeat.SetPos(rangeEnd, wholeBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
+				}
 
 				if (frameCount % 17 == 0 && currBeat.spriteName == "WholeBeat")
 				{
 					currBeat.SetGolden();
 				}
 			}
-
-			currBeat.SetPos(currBeat.GetXPos() - halfBeatSpeed * Time.deltaTime, wholeBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
+			
+			if (currBeat.spriteName == "WholeBeat")
+			{
+				currBeat.SetPos(currBeat.GetXPos() - halfBeatSpeed * Time.deltaTime, wholeBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
+			}
+			else
+			{
+				currBeat.SetPos(currBeat.GetXPos() - halfBeatSpeed * Time.deltaTime, halfBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
+			}
 		}
 	}
 
