@@ -1528,9 +1528,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fa8321000d515646b9c5d4ff2705e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 20
+  currentHealth: 100
   isPlayer: 1
-  maxHealth: 20
+  maxHealth: 100
   CombatActions:
   - {fileID: 11400000, guid: 31c18d88a59c39e43b523b790e8c90e1, type: 2}
   - {fileID: 11400000, guid: c8eb1e244389cef4fb33b1be67ad57ee, type: 2}
@@ -1755,9 +1755,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fa8321000d515646b9c5d4ff2705e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 20
+  currentHealth: 100
   isPlayer: 0
-  maxHealth: 20
+  maxHealth: 100
   CombatActions:
   - {fileID: 11400000, guid: 31c18d88a59c39e43b523b790e8c90e1, type: 2}
   - {fileID: 11400000, guid: c8eb1e244389cef4fb33b1be67ad57ee, type: 2}
@@ -2507,6 +2507,7 @@ MonoBehaviour:
   - {fileID: 1033259962}
   - {fileID: 266850563}
   - {fileID: 477615737}
+  beatRoller: {fileID: 702553995}
 --- !u!1 &1550151008
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,8 +4,21 @@ using TMPro;
 
 public class CombatActionUI : MonoBehaviour
 {
+    #region Properties
+    private bool abilityUsedThisTurn = false;
+    #endregion
+
+    #region UI
     [SerializeField] private GameObject visualContainer;
     [SerializeField] private Button[] combatActionButtons;
+    #endregion
+
+    // This is terribly gross and should be refactored. Having this here
+    // is giving the CombatActionUI class too much responsibility. Should ideally be
+    // handled by the TurnManager and use events to decouple the classes.
+    #region Rhythm
+    [SerializeField] private BeatRoller beatRoller;
+    #endregion
 
     void OnEnable()
     {
@@ -22,11 +35,13 @@ public class CombatActionUI : MonoBehaviour
     void OnBeginTurn(Character character)
     {
         if (!character.isPlayer)
-        {
             return;
-        }
 
+        // Reset flags & UI
+        abilityUsedThisTurn = false;
+        SetCombatActionButtonsInteractable(true);
         visualContainer.SetActive(true);
+
 
 
         for (int i = 0; i < combatActionButtons.Length; i++)
@@ -40,7 +55,7 @@ public class CombatActionUI : MonoBehaviour
                 combatActionButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = combatAction.DisplayName;
                 combatActionButtons[i].onClick.RemoveAllListeners();
 
-                combatActionButtons[i].onClick.AddListener(() => OnClickCombatAction(combatAction));
+                combatActionButtons[i].onClick.AddListener(() => OnClickCharacterCombatAction(character, combatAction));
             }
             else
             {
@@ -54,8 +69,34 @@ public class CombatActionUI : MonoBehaviour
         visualContainer.SetActive(false);
     }
 
-    public void OnClickCombatAction(CombatAction combatAction)
+    public void OnClickCharacterCombatAction(Character character, CombatAction combatAction)
     {
+        if (abilityUsedThisTurn)
+            return;
+
+        abilityUsedThisTurn = true;
+        SetCombatActionButtonsInteractable(false);
+
+        if (character.isPlayer)
+        {
+            beatRoller.Score(combatAction.Length, (scorePair) =>
+            {
+                float score = scorePair.Item1;
+                float maxScore = scorePair.Item2;
+                float modifier = 1 + score / maxScore;
+                combatAction = combatAction.applyModifier(combatAction, modifier);
+                character.CastCombatAction(combatAction);
+            });
+
+            return;
+        }
+
         TurnManager.Instance.CurrentCharacter.CastCombatAction(combatAction);
+    }
+
+    private void SetCombatActionButtonsInteractable(bool interactable)
+    {
+        foreach (var button in combatActionButtons)
+            button.interactable = interactable;
     }
 }
