@@ -39,7 +39,6 @@ public class CombatActionUI : MonoBehaviour
 
         // Reset flags & UI
         abilityUsedThisTurn = false;
-        Debug.Log("Set combat action buttons interactable to true");
         SetCombatActionButtonsInteractable(true);
         visualContainer.SetActive(true);
 
@@ -76,18 +75,15 @@ public class CombatActionUI : MonoBehaviour
             return;
 
         abilityUsedThisTurn = true;
-        Debug.Log("Set combat action buttons interactable to false");
         SetCombatActionButtonsInteractable(false);
 
         if (character.isPlayer)
         {
-            Debug.Log($"OnClickCharcterCombatAction Character: {character.gameObject.name}, action: {combatAction.DisplayName}");
             beatRoller.Score(combatAction.Length, (scorePair) =>
             {
                 float score = scorePair.Item1;
                 float maxScore = scorePair.Item2;
                 float modifier = 1 + score / maxScore;
-                Debug.Log($"Modifier: {modifier}");
                 combatAction = combatAction.applyModifier(combatAction, modifier);
                 character.CastCombatAction(combatAction);
             });

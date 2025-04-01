@@ -34,7 +34,6 @@ public class Character : MonoBehaviour
 
     public void CastCombatAction(CombatAction combatAction)
     {
-        Debug.Log($"Combat action: {combatAction.DisplayName}");
         if (combatAction.Damage > 0)
         {
             StartCoroutine(AttackOpponent(combatAction));

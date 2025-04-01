@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 
-
 public class BeatRoller : MonoBehaviour
 {
 	#region Music
@@ -275,7 +274,6 @@ public class BeatRoller : MonoBehaviour
 
 		if (keyCorrect && allBeats[beatIndex].GetDistFromCenter() <= tolerance)
 		{
-			// Debug.Log($"HIT: {patternIndex}");
 			if (allBeats[beatIndex].IsGolden())
 			{
 				numGoldenNotes++;
@@ -290,7 +288,6 @@ public class BeatRoller : MonoBehaviour
 		}
 		else
 		{
-			// Debug.Log($"MISS: {patternIndex}");
 			scoreMultiplier = 1;
 			return;
 		}
@@ -303,7 +300,6 @@ public class BeatRoller : MonoBehaviour
 			yield return null;
 		}
 
-		Debug.Log($"WaitForFinalScore: {score}");
 		onScoreCalculated?.Invoke((score, maxScore));
 	}
 }
