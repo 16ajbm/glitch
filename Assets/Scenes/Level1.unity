@@ -1768,9 +1768,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fa8321000d515646b9c5d4ff2705e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 50
+  currentHealth: 25
   isPlayer: 1
-  maxHealth: 50
+  maxHealth: 25
   CombatActions:
   - {fileID: 11400000, guid: 31c18d88a59c39e43b523b790e8c90e1, type: 2}
   - {fileID: 11400000, guid: 1621f56b4b2602b4c832b05f95608ae5, type: 2}
@@ -1996,12 +1996,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fa8321000d515646b9c5d4ff2705e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 50
+  currentHealth: 40
   isPlayer: 0
-  maxHealth: 50
+  maxHealth: 40
   CombatActions:
   - {fileID: 11400000, guid: 31c18d88a59c39e43b523b790e8c90e1, type: 2}
-  - {fileID: 11400000, guid: c8eb1e244389cef4fb33b1be67ad57ee, type: 2}
+  - {fileID: 11400000, guid: 3a7d8b5fd9ed8c14493a19a8dbd07bd5, type: 2}
   target: {fileID: 955316496}
 --- !u!4 &1025365705
 Transform:
