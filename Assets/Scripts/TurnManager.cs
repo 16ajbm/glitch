@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class TurnManager : MonoBehaviour
 {
@@ -67,9 +68,16 @@ public class TurnManager : MonoBehaviour
     void OnCharacterDie(Character character)
     {
         if (character.isPlayer)
+        {
             Debug.Log("You lost!");
+            LevelManager.LockLevel("Level2");
+        }
         else
+        {
             Debug.Log("You win!");
+            LevelManager.UnlockLevel("Level2");
+        }
+        SceneManager.LoadScene("LevelSelect");
     }
 
 }
