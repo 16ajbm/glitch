@@ -240,7 +240,7 @@ public class BeatRoller : MonoBehaviour
 				{
 					if (turnStarted && numBlueNotes < patternLen)
 					{
-						if (frameCount % 17 == 0)
+						if (frameCount % 17 == 0 && currBeat.spriteName == "WholeBeat")
 						{
 							currBeat.SetGolden();
 						}
