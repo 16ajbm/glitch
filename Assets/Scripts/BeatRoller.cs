@@ -38,6 +38,8 @@ public class BeatRoller : MonoBehaviour
 
 	#region Pattern
 	public TMP_Text timer;
+	public GameObject timerBox;
+	public GameObject scoreBox;
 	public TMP_Text goldenNoteCounterDisplay;
 	public TMP_Text multiplierDisplay;
 	private float timerVal = 10f;
@@ -95,12 +97,10 @@ public class BeatRoller : MonoBehaviour
 				allBeats[i].SetPos(rangeStart + i * halfBeatDist, halfBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
 			}
 
-			//allBeats[i].SetPos(rangeStart + i * halfBeatDist, wholeBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
-
 			allBeats[i].Activate();
 		}
 
-		pDisp = new PatternDisplay(patternBackground, parentCanvas, arrow, timer);
+		pDisp = new PatternDisplay(patternBackground, timerBox, parentCanvas, arrow, timer);
 
 		audio.Play();
 	}
@@ -133,6 +133,7 @@ public class BeatRoller : MonoBehaviour
 				turnStarted = true;
 				goldenNoteCounterDisplay.gameObject.SetActive(true);
 				multiplierDisplay.gameObject.SetActive(true);
+				scoreBox.SetActive(true);
 			}
 			timer.text = timerVal.ToString("F2");
 		}
@@ -149,10 +150,12 @@ public class BeatRoller : MonoBehaviour
 			madeFirstMove = false;
 			patternIndex = 0;
 			numGoldenNotes = 0;
+			scoreMultiplier = 1.0f;
 			numBlueNotes = 0;
 			finalScoringDone = true;
 			goldenNoteCounterDisplay.gameObject.SetActive(false);
 			multiplierDisplay.gameObject.SetActive(false);
+			scoreBox.SetActive(false);
 			return;
 		}
 

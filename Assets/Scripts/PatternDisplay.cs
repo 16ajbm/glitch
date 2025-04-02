@@ -6,6 +6,7 @@ using System.Collections;
 public class PatternDisplay
 {
 	public GameObject displayBox;
+	public GameObject timerBox;
 	public float displayWidth;
 	public float displayHeight;
 
@@ -14,9 +15,10 @@ public class PatternDisplay
 	public Canvas parentCanvas;
 	public TMP_Text timer;
 
-	public PatternDisplay(GameObject box, Canvas canvas, GameObject arrow, TMP_Text timer)
+	public PatternDisplay(GameObject box, GameObject tBox, Canvas canvas, GameObject arrow, TMP_Text timer)
 	{
 		displayBox = box;
+		timerBox = tBox;
 		parentCanvas = canvas;
 		arrowSprite = arrow;
 		this.timer = timer;
@@ -28,6 +30,7 @@ public class PatternDisplay
 	public GameObject[] Display(int[] pattern)
 	{
 		displayBox.SetActive(true);
+		timerBox.SetActive(true);
 
 		GameObject[] allArrows = new GameObject[pattern.Length];
 
@@ -61,6 +64,7 @@ public class PatternDisplay
 		{
 			Object.Destroy(allArrows[i]);
 			displayBox.SetActive(false);
+			timerBox.SetActive(false);
 			timer.text = "10.00";
 			timer.gameObject.SetActive(false);
 		}
