@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9177388c760802a4fb98dff4565d9f80
+guid: 11deb00f1f05f2241806f11dcecb450d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6895495282096838205
-    second: Enemy_1_0
+      213: -7244808124949040004
+    second: BossHead_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enemy_1_0
+      name: BossHead_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 4
-        width: 207
-        height: 281
+        x: 5
+        y: 17
+        width: 223
+        height: 188
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d3693c7dc68b1bf50800000000000000
-      internalID: 6895495282096838205
+      spriteID: c747c8e1565457b90800000000000000
+      internalID: -7244808124949040004
       vertices: []
       indices: 
       edges: []

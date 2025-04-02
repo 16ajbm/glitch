@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a4e4844c2a01ce944ba86cb53b118e23
+guid: 0fec356d9b6cadf47b47cf2f26deefff
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5515248611724314509
-    second: Player_Test_0
+      213: 2407983034928324272
+    second: CircleEnemyHead_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_Test_0
+      name: CircleEnemyHead_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 4
-        width: 236
-        height: 317
+        x: 2
+        y: 0
+        width: 238
+        height: 237
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d874bcd24691a8c40800000000000000
-      internalID: 5515248611724314509
+      spriteID: 0bed11eefcfda6120800000000000000
+      internalID: 2407983034928324272
       vertices: []
       indices: 
       edges: []
