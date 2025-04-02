@@ -283,7 +283,8 @@ public class BeatRoller : MonoBehaviour
 		patternHasBeenMade = false;
 
 		// Setting max score
-		maxScore = patternLen * defaultScore * goldenNoteMultiplier * scoreMultiplier;
+		//maxScore = patternLen * defaultScore * goldenNoteMultiplier * scoreMultiplier;
+		maxScore = (int)((float)defaultScore * (float)patternLen * (1 + ((float)patternLen - 1)/20));
 
 		StartCoroutine(WaitForFinalScore(onScoreCalculated));
 	}

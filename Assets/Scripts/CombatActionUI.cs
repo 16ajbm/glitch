@@ -83,7 +83,8 @@ public class CombatActionUI : MonoBehaviour
             {
                 float score = scorePair.Item1;
                 float maxScore = scorePair.Item2;
-                float modifier = 1 + score / maxScore;
+                //float modifier = 1 + score / maxScore;
+                float modifier = score / maxScore;
                 combatAction = combatAction.applyModifier(combatAction, modifier);
                 character.CastCombatAction(combatAction);
             });
