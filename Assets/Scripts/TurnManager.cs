@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class TurnManager : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class TurnManager : MonoBehaviour
     public UnityEvent<Character> OnTurnEnd;
 
     public static TurnManager Instance;
+
+    public GameObject victoryScreen;
+    public GameObject defeatScreen;
+    private bool gameOver = false;
 
     void Awake()
     {
@@ -51,10 +56,13 @@ public class TurnManager : MonoBehaviour
 
     public void BeginNextTurn()
     {
-        currentCharacterIndex = (currentCharacterIndex + 1) % characters.Count;
-        CurrentCharacter = characters[currentCharacterIndex];
-        Debug.Log($"BeginNextTurn: {CurrentCharacter.name}");
-        OnTurnStart?.Invoke(CurrentCharacter);
+        if (!gameOver)
+        {
+            currentCharacterIndex = (currentCharacterIndex + 1) % characters.Count;
+            CurrentCharacter = characters[currentCharacterIndex];
+            Debug.Log($"BeginNextTurn: {CurrentCharacter.name}");
+            OnTurnStart?.Invoke(CurrentCharacter);
+        }
     }
 
     public void EndCurrentTurn()
@@ -67,9 +75,26 @@ public class TurnManager : MonoBehaviour
     void OnCharacterDie(Character character)
     {
         if (character.isPlayer)
+        {
             Debug.Log("You lost!");
+            LevelManager.LockLevel("Level2");
+            defeatScreen.SetActive(true);
+        }
         else
+        {
             Debug.Log("You win!");
+            LevelManager.UnlockLevel("Level2");
+            victoryScreen.SetActive(true);
+        }
+        gameOver = true;
+        StartCoroutine(WaitForEndScreen());
+        //SceneManager.LoadScene("LevelSelect");
+    }
+
+    IEnumerator WaitForEndScreen()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("LevelSelect");
     }
 
 }

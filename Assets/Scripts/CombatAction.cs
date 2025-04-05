@@ -36,7 +36,7 @@ public class CombatAction : ScriptableObject
         if (modifiableAction.ActionType == Type.Attack)
         {
             // Modifier can be directly applied to damage since it is a non-nullable integer
-            modifiableAction.Damage = Math.Max(1, (int)(modifiableAction.Damage * modifier));
+            modifiableAction.Damage = Math.Max(1, (int)(modifiableAction.Damage * (1 + modifier)));
         }
 
         return modifiableAction;

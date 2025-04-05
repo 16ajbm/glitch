@@ -9,9 +9,15 @@ public class LevelManager : MonoBehaviour
         LevelManager.UnlockLevel(firstLevel.GetComponent<LevelClick>().levelName);
     }
 
-        public static void UnlockLevel(string levelName)
+    public static void UnlockLevel(string levelName)
     {
         PlayerPrefs.SetInt(levelName, 1);
+        PlayerPrefs.Save();
+    }
+
+    public static void LockLevel(string levelName)
+    {
+        PlayerPrefs.SetInt(levelName, 0);
         PlayerPrefs.Save();
     }
 

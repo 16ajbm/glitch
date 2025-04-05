@@ -34,10 +34,13 @@ public class BeatRoller : MonoBehaviour
 	private float halfBeatDist;
 	private float halfBeatSpeed;
 	private int frameCount;
+	private float lastAudioTime;
 	#endregion
 
 	#region Pattern
 	public TMP_Text timer;
+	public GameObject timerBox;
+	public GameObject scoreBox;
 	public TMP_Text goldenNoteCounterDisplay;
 	public TMP_Text multiplierDisplay;
 	private float timerVal = 10f;
@@ -87,20 +90,21 @@ public class BeatRoller : MonoBehaviour
 			if (i % 2 == 0)
 			{
 				allBeats[i] = new Beat("WholeBeat", wholeBeat, parentCanvas);
+				allBeats[i].SetPos(rangeStart + i * halfBeatDist, wholeBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
 			}
 			else
 			{
 				allBeats[i] = new Beat("HalfBeat", halfBeat, parentCanvas);
+				allBeats[i].SetPos(rangeStart + i * halfBeatDist, halfBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
 			}
-
-			allBeats[i].SetPos(rangeStart + i * halfBeatDist, wholeBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
 
 			allBeats[i].Activate();
 		}
 
-		pDisp = new PatternDisplay(patternBackground, parentCanvas, arrow, timer);
+		pDisp = new PatternDisplay(patternBackground, timerBox, parentCanvas, arrow, timer);
 
 		audio.Play();
+		lastAudioTime = Time.time;
 	}
 
 	void Update()
@@ -131,6 +135,7 @@ public class BeatRoller : MonoBehaviour
 				turnStarted = true;
 				goldenNoteCounterDisplay.gameObject.SetActive(true);
 				multiplierDisplay.gameObject.SetActive(true);
+				scoreBox.SetActive(true);
 			}
 			timer.text = timerVal.ToString("F2");
 		}
@@ -147,10 +152,12 @@ public class BeatRoller : MonoBehaviour
 			madeFirstMove = false;
 			patternIndex = 0;
 			numGoldenNotes = 0;
+			scoreMultiplier = 1.0f;
 			numBlueNotes = 0;
 			finalScoringDone = true;
 			goldenNoteCounterDisplay.gameObject.SetActive(false);
 			multiplierDisplay.gameObject.SetActive(false);
+			scoreBox.SetActive(false);
 			return;
 		}
 
@@ -217,39 +224,58 @@ public class BeatRoller : MonoBehaviour
 
 	void ShiftBeats()
 	{
-		for (int i = 0; i < numBeatDivisions; i++)
-		{
-			Beat currBeat = allBeats[i];
+		float currAudioTime = Time.time;
+		float deltaAudioTime = currAudioTime - lastAudioTime;
 
-			if (currBeat.GetXPos() < rangeStart)
+		if (deltaAudioTime > 0)
+		{
+			float moveDist = deltaAudioTime * halfBeatSpeed;
+			
+			for (int i = 0; i < numBeatDivisions; i++)
 			{
-				if (turnStarted && numBlueNotes < patternLen)
+				Beat currBeat = allBeats[i];
+				float newXPos = currBeat.GetXPos() - moveDist;
+				
+				if (newXPos < rangeStart)
 				{
-					currBeat.SetTurnColor();
-					if (currBeat.spriteName == "WholeBeat")
+					if (turnStarted && numBlueNotes < patternLen)
 					{
-						numBlueNotes++;
-						if (numBlueNotes == 1)
+						if (frameCount % 17 == 0 && currBeat.spriteName == "WholeBeat")
 						{
-							beatIndex = i;
-							madeFirstMove = true;
+							currBeat.SetGolden();
+						}
+						else
+						{
+							currBeat.SetTurnColor();
+						}
+						if (currBeat.spriteName == "WholeBeat")
+						{
+							numBlueNotes++;
+							if (numBlueNotes == 1)
+							{
+								beatIndex = i;
+								madeFirstMove = true;
+							}
 						}
 					}
+					else
+					{
+						currBeat.ResetColor();
+					}
+
+					newXPos = rangeEnd - (rangeStart - newXPos);
+				}
+
+				if (currBeat.spriteName == "WholeBeat")
+				{
+					currBeat.SetPos(newXPos, wholeBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
 				}
 				else
 				{
-					currBeat.ResetColor();
-				}
-
-				currBeat.SetPos(rangeEnd, wholeBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
-
-				if (frameCount % 17 == 0 && currBeat.spriteName == "WholeBeat")
-				{
-					currBeat.SetGolden();
+					currBeat.SetPos(newXPos, halfBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
 				}
 			}
-
-			currBeat.SetPos(currBeat.GetXPos() - halfBeatSpeed * Time.deltaTime, wholeBeat.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition.y);
+			lastAudioTime = currAudioTime;
 		}
 	}
 
@@ -264,7 +290,7 @@ public class BeatRoller : MonoBehaviour
 		patternHasBeenMade = false;
 
 		// Setting max score
-		maxScore = patternLen * defaultScore * goldenNoteMultiplier * scoreMultiplier;
+		maxScore = (int)((float)defaultScore * (float)patternLen * (1 + ((float)patternLen - 1)/20));
 
 		StartCoroutine(WaitForFinalScore(onScoreCalculated));
 	}
