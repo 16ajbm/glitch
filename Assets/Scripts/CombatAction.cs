@@ -22,6 +22,9 @@ public class CombatAction : ScriptableObject
     [Header("Pattern Length")]
     public int Length = 1;
 
+    [Header("Animation")]
+    public GameObject AnimationPrefab;
+
     public CombatAction applyModifier(CombatAction combatAction, float modifier)
     {
         // Instantiate a new CombatAction to avoid modifying the original
