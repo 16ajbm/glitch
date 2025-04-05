@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         LevelManager.UnlockLevel(firstLevel.GetComponent<LevelClick>().levelName);
+        // Need to set the following when user presses new game on main menu: PlayerPrefs.SetInt("Tutorial1", 0);
     }
 
     public static void UnlockLevel(string levelName)

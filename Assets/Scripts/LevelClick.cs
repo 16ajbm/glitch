@@ -28,7 +28,16 @@ public class LevelClick : MonoBehaviour, IPointerClickHandler
         if (LevelManager.IsLevelUnlocked(levelName))
         {
             Debug.Log($"Level: {levelName} selected.");
-            LoadLevel();
+
+            if (levelName == "Level1" && PlayerPrefs.GetInt("Tutorial", 0) == 0)
+            {
+                Debug.Log("Loading tutorial");
+                SceneManager.LoadScene("Tutorial");
+            }
+            else
+            {
+                LoadLevel();
+            }
         } else
         {
             Debug.Log($"Level: {levelName} is locked.");

@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class BeatRoller : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class BeatRoller : MonoBehaviour
 	new public AudioSource audio;
 	[Range(0f, 1f), SerializeField] float volume = 1f;
 	public float bpm = 130f;
-	public float firstBeatOffset = 0.55f;
+	public float firstBeatOffset = 0.15f;
 	#endregion
 
 	#region UI
@@ -35,6 +36,7 @@ public class BeatRoller : MonoBehaviour
 	private float halfBeatSpeed;
 	private int frameCount;
 	private float lastAudioTime;
+	private bool audioStarted = false;
 	#endregion
 
 	#region Pattern
@@ -70,8 +72,23 @@ public class BeatRoller : MonoBehaviour
 	private bool finalScoringDone = false;
 	#endregion
 
+	#region Tutorial
+    private bool isTutorial = false;
+	private int tipIndex = 0;
+	public GameObject welcome;
+	public GameObject characters;
+	public GameObject rhythm;
+	public GameObject combatMenu;
+	public GameObject damage;
+	public GameObject lightAttack;
+	public GameObject patternDisp;
+	public GameObject minigame;
+	#endregion
+
 	void Start()
 	{
+        if (SceneManager.GetActiveScene().name == "Tutorial") isTutorial = true;
+
 		wholeBeat.SetActive(false);
 		halfBeat.SetActive(false);
 		ball.SetActive(true);
@@ -103,14 +120,82 @@ public class BeatRoller : MonoBehaviour
 
 		pDisp = new PatternDisplay(patternBackground, timerBox, parentCanvas, arrow, timer);
 
-		audio.Play();
-		lastAudioTime = Time.time;
+		//if (!isTutorial) audio.Play();
+		//lastAudioTime = Time.time;
 	}
 
 	void Update()
 	{
 		if (audio != null)
 			audio.volume = volume;
+
+		if (!isTutorial && !audioStarted) 
+		{
+			audio.Play();
+			lastAudioTime = Time.time;
+			audioStarted = true;
+		}
+
+        if (isTutorial) {
+		    if (tipIndex < 6)
+		    {
+		    	Time.timeScale = 0f;
+		    }
+
+		    if (Input.GetKeyDown(KeyCode.Return)) 
+		    {
+		    	if (tipIndex == 5)
+		    	{
+		    		lightAttack.SetActive(false);
+		    		Time.timeScale = 1f;
+		    		audio.Play();
+		    	}
+		    	else if (tipIndex == 7)
+		    	{
+		    		minigame.SetActive(false);
+		    		Time.timeScale = 1f;
+		    		audio.Play();
+		    	}
+		    	tipIndex++;
+		    }
+
+		    switch (tipIndex)
+		    {
+		    	case 0:
+		    		welcome.SetActive(true);
+		    		break;
+		    	case 1:
+		    		welcome.SetActive(false);
+		    		characters.SetActive(true);
+		    		break;
+		    	case 2:
+		    		characters.SetActive(false);
+		    		rhythm.SetActive(true);
+		    		break;
+		    	case 3:
+		    		rhythm.SetActive(false);
+		    		combatMenu.SetActive(true);
+		    		break;
+		    	case 4:
+		    		combatMenu.SetActive(false);
+		    		damage.SetActive(true);
+		    		break;
+		    	case 5:
+		    		damage.SetActive(false);
+		    		lightAttack.SetActive(true);
+		    		break;
+		    	case 6:
+		    		if (patternHasBeenMade)
+		    		{
+		    			patternDisp.SetActive(true);
+		    		}
+		    		break;
+		    	case 7:
+		    		patternDisp.SetActive(false);
+		    		minigame.SetActive(true);
+		    		break;
+		    }
+        }
 
 		if (audio.time <= firstBeatOffset) return;
 
@@ -122,9 +207,16 @@ public class BeatRoller : MonoBehaviour
 			pattern = Pattern.MakePattern(patternLen);
 			Debug.Log("Pattern: " + string.Join(", ", pattern));
 			allArrows = pDisp.Display(pattern);
+
+			// Important for tutorial
+			if (isTutorial && tipIndex == 6)
+			{
+				Time.timeScale = 0f;
+				audio.Pause();
+			}
 		}
 
-		if (makePattern && !turnStarted)
+		if (makePattern && !turnStarted && Time.timeScale == 1f)
 		{
 			timerVal -= Time.deltaTime;
 			if (timerVal <= 0)

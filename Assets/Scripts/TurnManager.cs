@@ -77,13 +77,30 @@ public class TurnManager : MonoBehaviour
         if (character.isPlayer)
         {
             Debug.Log("You lost!");
-            LevelManager.LockLevel("Level2");
             defeatScreen.SetActive(true);
         }
         else
         {
             Debug.Log("You win!");
-            LevelManager.UnlockLevel("Level2");
+            string currentLevel = SceneManager.GetActiveScene().name;
+            switch (currentLevel)
+            {   
+                case "Tutorial":
+                    PlayerPrefs.SetInt("Tutorial", 1);
+                    break;
+                case "Level1":
+                    LevelManager.UnlockLevel("Level2");
+                    break;
+                case "Level2":
+                    LevelManager.UnlockLevel("Level3");
+                    break;
+                case "Level3":
+                    LevelManager.UnlockLevel("Level4");
+                    break;
+                case "Level4":
+                    LevelManager.UnlockLevel("Level5");
+                    break;
+            }
             victoryScreen.SetActive(true);
         }
         gameOver = true;
@@ -94,7 +111,14 @@ public class TurnManager : MonoBehaviour
     IEnumerator WaitForEndScreen()
     {
         yield return new WaitForSeconds(5);
-        SceneManager.LoadScene("LevelSelect");
+        if (SceneManager.GetActiveScene().name == "Tutorial")
+        {
+            SceneManager.LoadScene("Level1");
+        }
+        else
+        {
+            SceneManager.LoadScene("LevelSelect");
+        }
     }
 
 }
