@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      FlyingEnemyHead_0: 3588559602628117787
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
