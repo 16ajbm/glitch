@@ -10,7 +10,7 @@ public class PatternDisplay
 	public float displayWidth;
 	public float displayHeight;
 
-	private float padding = 10f;
+	private float padding = 100f;
 	public GameObject arrowSprite;
 	public Canvas parentCanvas;
 	public TMP_Text timer;
