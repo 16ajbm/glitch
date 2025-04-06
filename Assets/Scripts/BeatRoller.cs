@@ -37,6 +37,8 @@ public class BeatRoller : MonoBehaviour
 	private int frameCount;
 	private float lastAudioTime;
 	private bool audioStarted = false;
+	private float ballTime = 0f;
+	private float timeStarted;
 	#endregion
 
 	#region Pattern
@@ -120,12 +122,14 @@ public class BeatRoller : MonoBehaviour
 
 		pDisp = new PatternDisplay(patternBackground, timerBox, parentCanvas, arrow, timer);
 
-		//if (!isTutorial) audio.Play();
-		//lastAudioTime = Time.time;
+		timeStarted = Time.time;
+		ballTime = 0f;
 	}
 
 	void Update()
 	{
+		if (Time.time - timeStarted < 2) return;
+
 		if (audio != null)
 			audio.volume = volume;
 
@@ -149,6 +153,7 @@ public class BeatRoller : MonoBehaviour
 		    		lightAttack.SetActive(false);
 		    		Time.timeScale = 1f;
 		    		audio.Play();
+					lastAudioTime = Time.time;
 		    	}
 		    	else if (tipIndex == 7)
 		    	{
@@ -199,8 +204,6 @@ public class BeatRoller : MonoBehaviour
 
 		if (audio.time <= firstBeatOffset) return;
 
-		ball.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition = Vector2.Lerp(ballOrigin, ballTarget, Mathf.PingPong(Time.time / halfBeatDelta, 1));
-
 		if (makePattern && !patternHasBeenMade)
 		{
 			patternHasBeenMade = true;
@@ -232,7 +235,10 @@ public class BeatRoller : MonoBehaviour
 			timer.text = timerVal.ToString("F2");
 		}
 
-		ShiftBeats();
+		float currAudioTime = Time.time;
+		if ((isTutorial && tipIndex > 5) || !isTutorial) ballTime += currAudioTime - lastAudioTime;
+		ball.GetComponent<Image>().GetComponent<RectTransform>().anchoredPosition = Vector2.Lerp(ballOrigin, ballTarget, Mathf.PingPong(ballTime / halfBeatDelta, 1));
+		ShiftBeats(currAudioTime);
 		frameCount++;
 
 		if (turnEnded) return;
@@ -314,9 +320,8 @@ public class BeatRoller : MonoBehaviour
 
 	}
 
-	void ShiftBeats()
+	void ShiftBeats(float currAudioTime)
 	{
-		float currAudioTime = Time.time;
 		float deltaAudioTime = currAudioTime - lastAudioTime;
 
 		if (deltaAudioTime > 0)
