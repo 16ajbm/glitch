@@ -23,7 +23,7 @@ public class Character : MonoBehaviour
 
     #region Events
     public event UnityAction OnHealthChange;
-    public static  event UnityAction<Character> OnDie;
+    public static event UnityAction<Character> OnDie;
     #endregion
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -64,28 +64,60 @@ public class Character : MonoBehaviour
         if (currentHealth <= 0) Die();
     }
 
-    IEnumerator AttackOpponent(CombatAction combatAction)
-    {
-        while (transform.position != target.transform.position)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 50 * Time.deltaTime);
-            yield return null;
-        }
-
-        target.TakeDamage(combatAction.Damage);
-
-        while (transform.position != startPosition)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, startPosition, 25 * Time.deltaTime);
-            yield return null;
-        }
-
-        TurnManager.Instance.EndCurrentTurn();
-    }
 
     void Die()
     {
         OnDie?.Invoke(this);
         Destroy(gameObject);
+    }
+
+    IEnumerator AttackOpponent(CombatAction combatAction)
+    {
+        // This is going to be a bulky, dirty function... sorry!
+        // Creating an ID was the simplest way to identify the animation to play
+        // Couldn't use object name as it adds the suffix "(Clone)" when copied
+        if (combatAction.ID == "fel_fire")
+        {
+            Vector3 oneThirdPosition = Vector3.Lerp(startPosition, target.transform.position, 0.33f);
+
+            yield return MoveToPosition(oneThirdPosition, 50);
+
+            // Raise the animation to appear about the middle of the character
+            Vector3 animationOffset = new Vector3(0, 1.0f, 0);
+            Debug.Log("Instantiating felfire animation prefab");
+            GameObject animation = Instantiate(combatAction.AnimationPrefab, target.transform.position + animationOffset, Quaternion.identity);
+
+            // Not required but parenting it to the target would follow the target's movement if needed
+            animation.transform.SetParent(target.transform, worldPositionStays: true);
+
+            // Wait for the animation to finish before dealing damage
+            // This is a not so good way to wait for the animation to finish, but it works for now
+            yield return new WaitForSeconds(1.5f);
+
+            target.TakeDamage(combatAction.Damage);
+
+            yield return MoveToPosition(startPosition, 25);
+        }
+        else
+        {
+            // Default animation if attack has no defined case to handle animation
+            yield return MoveToPosition(target.transform.position, 50);
+
+            target.TakeDamage(combatAction.Damage);
+
+            yield return MoveToPosition(startPosition, 25);
+        }
+
+        TurnManager.Instance.EndCurrentTurn();
+    }
+
+    // Speed is an arbitrary value that will be multiplied by Time.deltaTime
+    IEnumerator MoveToPosition(Vector3 targetPosition, float speed)
+    {
+        while (transform.position != targetPosition)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+            yield return null;
+        }
     }
 }
