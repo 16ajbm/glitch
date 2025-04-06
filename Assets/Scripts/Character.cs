@@ -40,7 +40,7 @@ public class Character : MonoBehaviour
         }
         else if (combatAction.HealAmount > 0)
         {
-            Heal(combatAction.HealAmount);
+            StartCoroutine(RunHeal(combatAction));
         }
     }
 
@@ -71,6 +71,18 @@ public class Character : MonoBehaviour
         Destroy(gameObject);
     }
 
+    IEnumerator RunHeal(CombatAction healAction) {
+        // Raise the animation to appear about the middle of the character
+            Vector3 animationOffset = new Vector3(0, 1.0f, 0);
+            GameObject animation = Instantiate(healAction.AnimationPrefab, transform.position + animationOffset, Quaternion.identity);
+            // Not required but parenting it to the target would follow the target's movement if needed
+            animation.transform.SetParent(transform, worldPositionStays: true);
+            // Wait for the animation to finish
+            yield return new WaitForSeconds(1.5f);
+
+            Heal(healAction.HealAmount);
+    }
+
     IEnumerator AttackOpponent(CombatAction combatAction)
     {
         // This is going to be a bulky, dirty function... sorry!
@@ -83,8 +95,7 @@ public class Character : MonoBehaviour
             yield return MoveToPosition(oneThirdPosition, 50);
 
             // Raise the animation to appear about the middle of the character
-            Vector3 animationOffset = new Vector3(0, 1.0f, 0);
-            Debug.Log("Instantiating felfire animation prefab");
+            Vector3 animationOffset = new Vector3(0, 0.5f, 0);
             GameObject animation = Instantiate(combatAction.AnimationPrefab, target.transform.position + animationOffset, Quaternion.identity);
 
             // Not required but parenting it to the target would follow the target's movement if needed
