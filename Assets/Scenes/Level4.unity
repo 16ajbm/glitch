@@ -1855,8 +1855,8 @@ MonoBehaviour:
   isPlayer: 1
   maxHealth: 25
   CombatActions:
-  - {fileID: 11400000, guid: 31c18d88a59c39e43b523b790e8c90e1, type: 2}
-  - {fileID: 11400000, guid: 0b7edbe60648d784d901e086fd826844, type: 2}
+  - {fileID: 11400000, guid: 40a49660b5f69f34ca92f4ad0fea9969, type: 2}
+  - {fileID: 11400000, guid: f65a6c6c0b142534fbd9252e7329095f, type: 2}
   - {fileID: 11400000, guid: c8eb1e244389cef4fb33b1be67ad57ee, type: 2}
   target: {fileID: 1025365704}
 --- !u!4 &955316497
@@ -2154,9 +2154,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fa8321000d515646b9c5d4ff2705e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 40
+  currentHealth: 56
   isPlayer: 0
-  maxHealth: 40
+  maxHealth: 56
   CombatActions:
   - {fileID: 11400000, guid: 31c18d88a59c39e43b523b790e8c90e1, type: 2}
   - {fileID: 11400000, guid: 3a7d8b5fd9ed8c14493a19a8dbd07bd5, type: 2}
