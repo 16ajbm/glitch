@@ -78,14 +78,21 @@ public class Character : MonoBehaviour
         // Couldn't use object name as it adds the suffix "(Clone)" when copied
         if (combatAction.ID == "fel_fire")
         {
-            yield return MoveToPosition(target.transform.position, 50);
+            Vector3 oneThirdPosition = Vector3.Lerp(startPosition, target.transform.position, 0.33f);
+
+            yield return MoveToPosition(oneThirdPosition, 50);
 
             // Raise the animation to appear about the middle of the character
             Vector3 animationOffset = new Vector3(0, 1.0f, 0);
+            Debug.Log("Instantiating felfire animation prefab");
             GameObject animation = Instantiate(combatAction.AnimationPrefab, target.transform.position + animationOffset, Quaternion.identity);
 
             // Not required but parenting it to the target would follow the target's movement if needed
             animation.transform.SetParent(target.transform, worldPositionStays: true);
+
+            // Wait for the animation to finish before dealing damage
+            // This is a not so good way to wait for the animation to finish, but it works for now
+            yield return new WaitForSeconds(1.5f);
 
             target.TakeDamage(combatAction.Damage);
 
