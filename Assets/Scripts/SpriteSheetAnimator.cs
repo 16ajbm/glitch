@@ -14,6 +14,7 @@ public class SpriteSheetAnimator : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("SpriteSheetAnimator started with " + frames.Length + " frames.");
         spriteRenderer = GetComponent<SpriteRenderer>();
         // Set initial sprite
         spriteRenderer.sprite = frames[0];

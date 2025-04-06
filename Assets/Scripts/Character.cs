@@ -23,7 +23,7 @@ public class Character : MonoBehaviour
 
     #region Events
     public event UnityAction OnHealthChange;
-    public static  event UnityAction<Character> OnDie;
+    public static event UnityAction<Character> OnDie;
     #endregion
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -66,18 +66,31 @@ public class Character : MonoBehaviour
 
     IEnumerator AttackOpponent(CombatAction combatAction)
     {
-        while (transform.position != target.transform.position)
+        // This is going to be a bulky, dirty function... sorry!
+        if (combatAction.ID == "fel_fire")
         {
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 50 * Time.deltaTime);
-            yield return null;
-        }
+            while (transform.position != target.transform.position)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 50 * Time.deltaTime);
+                yield return null;
+            }
 
-        target.TakeDamage(combatAction.Damage);
+            // Raise the animation to appear about the middle of the character
+            Vector3 animationOffset = new Vector3(0, 1.0f, 0);
 
-        while (transform.position != startPosition)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, startPosition, 25 * Time.deltaTime);
-            yield return null;
+            GameObject animation = Instantiate(combatAction.AnimationPrefab, target.transform.position + animationOffset, Quaternion.identity);
+
+            // Not required but parenting it to the target would follow the target's movement if needed
+            animation.transform.SetParent(target.transform, worldPositionStays: true);
+
+
+            target.TakeDamage(combatAction.Damage);
+
+            while (transform.position != startPosition)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, startPosition, 25 * Time.deltaTime);
+                yield return null;
+            }
         }
 
         TurnManager.Instance.EndCurrentTurn();

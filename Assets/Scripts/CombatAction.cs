@@ -10,6 +10,9 @@ public class CombatAction : ScriptableObject
         Heal
     }
 
+    [Header("Unique ID")]
+    public string ID;
+
     public string DisplayName;
     public Type ActionType;
 
