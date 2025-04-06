@@ -7,6 +7,12 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        PlayerPrefs.SetInt("Tutorial", 0);
+        LevelManager.UnlockLevel("Level1");
+        LevelManager.LockLevel("Level2");
+        LevelManager.LockLevel("Level3");
+        LevelManager.LockLevel("Level4");
+        LevelManager.LockLevel("Level5");
     }
 
     public void QuitGame()

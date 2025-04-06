@@ -1,14 +1,24 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
+
 
 public class SettingsMenu : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public AudioMixer audioMixer;
+    public Slider volumeSlider;
 
-    public void SetVolume(float volume)
+    void Start()
     {
-        audioMixer.SetFloat("volume", volume);
+        float savedVolume = PlayerPrefs.GetFloat("Volume", 1f);
+        AudioListener.volume = savedVolume;
+        volumeSlider.value = savedVolume;
     }
 
+    public void OnVolumeChange(float volume)
+    {
+        AudioListener.volume = volume;
+        PlayerPrefs.SetFloat("Volume", volume);
+        PlayerPrefs.Save();
+        Debug.Log(volume);
+    }
 }
