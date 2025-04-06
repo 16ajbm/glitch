@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7847945750511384511}
   - component: {fileID: 1173888366946112508}
   m_Layer: 0
-  m_Name: FelFireAnimation
+  m_Name: HealAnimation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -46,13 +46,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frames:
-  - {fileID: -2565550213490484175, guid: 2002d2eec9c602840a7497a6e229a932, type: 3}
-  - {fileID: -5723601938151484444, guid: 2002d2eec9c602840a7497a6e229a932, type: 3}
-  - {fileID: -8012305204817885072, guid: 2002d2eec9c602840a7497a6e229a932, type: 3}
-  - {fileID: 1259800762271023373, guid: 2002d2eec9c602840a7497a6e229a932, type: 3}
-  - {fileID: -5301397988302545074, guid: 2002d2eec9c602840a7497a6e229a932, type: 3}
-  - {fileID: -6517668802933576620, guid: 2002d2eec9c602840a7497a6e229a932, type: 3}
-  frameRate: 0.1
+  - {fileID: 2903848411162822477, guid: 68a26abc45af9a0459704ddafc0722ff, type: 3}
+  - {fileID: -893675218100121079, guid: 68a26abc45af9a0459704ddafc0722ff, type: 3}
+  - {fileID: 2928916444087662039, guid: 68a26abc45af9a0459704ddafc0722ff, type: 3}
+  - {fileID: -1398132742003509683, guid: 68a26abc45af9a0459704ddafc0722ff, type: 3}
+  - {fileID: -2599149563224560162, guid: 68a26abc45af9a0459704ddafc0722ff, type: 3}
+  - {fileID: 5951998098815178954, guid: 68a26abc45af9a0459704ddafc0722ff, type: 3}
+  - {fileID: -7882718956405584606, guid: 68a26abc45af9a0459704ddafc0722ff, type: 3}
+  frameRate: 0.12
   lifetime: 2
 --- !u!212 &1173888366946112508
 SpriteRenderer:
@@ -98,7 +99,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -2565550213490484175, guid: 2002d2eec9c602840a7497a6e229a932, type: 3}
+  m_Sprite: {fileID: 2903848411162822477, guid: 68a26abc45af9a0459704ddafc0722ff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

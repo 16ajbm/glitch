@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d9e7e6bab569a45a85154c90f6c4fd, type: 3}
   m_Name: StrongHeal
   m_EditorClassIdentifier: 
+  ID: 
   DisplayName: Heal (6)
   ActionType: 1
   Damage: 0
   HealAmount: 7
   Length: 6
+  AnimationPrefab: {fileID: 4225489973739594095, guid: 56ca79cebba377e498d24c51f9961967, type: 3}

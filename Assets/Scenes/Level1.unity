@@ -1474,7 +1474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audio: {fileID: 167253730}
-  volume: 1
+  volume: 0
   bpm: 130
   firstBeatOffset: 0.15
   parentCanvas: {fileID: 1524367151}
