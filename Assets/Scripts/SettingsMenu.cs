@@ -6,19 +6,15 @@ using UnityEngine.UI;
 public class SettingsMenu : MonoBehaviour
 {
     public Slider volumeSlider;
+    public AudioMixer audioMixer;
 
     void Start()
     {
-        float savedVolume = PlayerPrefs.GetFloat("Volume", 1f);
-        AudioListener.volume = savedVolume;
-        volumeSlider.value = savedVolume;
+        volumeSlider.value = AudioManager.GetVolume(audioMixer);
     }
 
     public void OnVolumeChange(float volume)
     {
-        AudioListener.volume = volume;
-        PlayerPrefs.SetFloat("Volume", volume);
-        PlayerPrefs.Save();
-        Debug.Log(volume);
+        AudioManager.SetVolume(audioMixer, volume);
     }
 }
