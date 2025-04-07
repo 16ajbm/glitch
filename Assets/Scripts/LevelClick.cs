@@ -34,11 +34,20 @@ public class LevelClick : MonoBehaviour, IPointerClickHandler
                 Debug.Log("Loading tutorial");
                 SceneManager.LoadScene("Tutorial");
             }
+
+            else if (levelName == "Level5")
+            {
+                Debug.Log("Loading BeforeBoss");
+                SceneManager.LoadScene("BeforeBoss");
+            }
+
             else
             {
                 LoadLevel();
             }
-        } else
+            
+        }
+        else
         {
             Debug.Log($"Level: {levelName} is locked.");
         }
