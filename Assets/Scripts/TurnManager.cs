@@ -115,6 +115,10 @@ public class TurnManager : MonoBehaviour
         {
             SceneManager.LoadScene("Level1");
         }
+        else if (SceneManager.GetActiveScene().name == "Level5")
+        {
+            SceneManager.LoadScene("AfterBossScene");
+        }
         else
         {
             SceneManager.LoadScene("LevelSelect");
