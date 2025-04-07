@@ -65,7 +65,7 @@ public class DialogueScene : MonoBehaviour
                 break;
             case 9:
                 Dialogue9.SetActive(false);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                SceneManager.LoadScene("LevelSelect");
                 break;
         }
             
