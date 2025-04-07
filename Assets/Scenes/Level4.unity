@@ -1205,7 +1205,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7028842072390148906, guid: 75fb179357822ed4e988aa11f34f7c66, type: 3}
+  m_Sprite: {fileID: 5049059679262521404, guid: 9fed780e4fc4c9d4e9507700ac3031b5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1855,8 +1855,8 @@ MonoBehaviour:
   isPlayer: 1
   maxHealth: 25
   CombatActions:
-  - {fileID: 11400000, guid: 31c18d88a59c39e43b523b790e8c90e1, type: 2}
-  - {fileID: 11400000, guid: 0b7edbe60648d784d901e086fd826844, type: 2}
+  - {fileID: 11400000, guid: 40a49660b5f69f34ca92f4ad0fea9969, type: 2}
+  - {fileID: 11400000, guid: f65a6c6c0b142534fbd9252e7329095f, type: 2}
   - {fileID: 11400000, guid: c8eb1e244389cef4fb33b1be67ad57ee, type: 2}
   target: {fileID: 1025365704}
 --- !u!4 &955316497
@@ -2154,9 +2154,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fa8321000d515646b9c5d4ff2705e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 32
+  currentHealth: 56
   isPlayer: 0
-  maxHealth: 32
+  maxHealth: 56
   CombatActions:
   - {fileID: 11400000, guid: 31c18d88a59c39e43b523b790e8c90e1, type: 2}
   - {fileID: 11400000, guid: 3a7d8b5fd9ed8c14493a19a8dbd07bd5, type: 2}
@@ -2524,7 +2524,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1059913014644421976, guid: 954f5bb7a183f4449b5e46aa89927522, type: 3}
+  m_Sprite: {fileID: 1552156606783464736, guid: 6e4df9396cbdfd24cb15c267ee7e782c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
