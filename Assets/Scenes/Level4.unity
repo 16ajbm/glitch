@@ -221,8 +221,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 5aeb82b65dc89b941bdba30d1ae18c52, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 32feec1a925448a4486092a2e4856a4b, type: 3}
-  m_Resource: {fileID: 8300000, guid: 32feec1a925448a4486092a2e4856a4b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: cef53570a63724e48815d8726a840da3, type: 3}
+  m_Resource: {fileID: 8300000, guid: cef53570a63724e48815d8726a840da3, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1475,7 +1475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audio: {fileID: 167253730}
   volume: 1
-  bpm: 130
+  bpm: 155
   firstBeatOffset: 0.15
   parentCanvas: {fileID: 1524367151}
   ball: {fileID: 445385171}
